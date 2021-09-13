@@ -1,12 +1,32 @@
 import click
 
+import piate
+from piate.api.credentials import Credentials
+
 
 @click.group()
-def run():
-    ...
+@click.option(
+    "--username",
+    "-U",
+    metavar="USERNAME",
+    help="Username to request against the API",
+    required=False,
+)
+@click.option(
+    "--api-key",
+    "-K",
+    metavar="API_KEY",
+    help="API Key to use to request against the API",
+    required=False,
+)
+@click.pass_context
+def run(ctx: click.Context, username: str, api_key: str):
+    ctx.obj = Credentials(username=username, api_key=api_key)
 
 
-## INVENTORIES
+"""
+Inventories
+"""
 
 
 @run.group()
@@ -16,6 +36,7 @@ def inventories():
 
 @inventories.command("list-languages")
 def inventories_languages():
+    piate.client()
     raise NotImplementedError()
 
 
@@ -44,7 +65,9 @@ def inventories_reliabilities():
     raise NotImplementedError()
 
 
-## DOMAINS
+""""
+Domains
+"""
 
 
 @run.command("list-domains")
@@ -62,7 +85,9 @@ def institutions():
     raise NotImplementedError()
 
 
-## Entries
+"""
+Entries
+"""
 
 
 @run.group("entries")

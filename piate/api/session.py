@@ -3,6 +3,7 @@ from typing import Optional
 import requests
 
 from piate.api.authentication.v2 import Authentication, TokenResponse
+from piate.api.credentials import Credentials
 
 
 class Session:
@@ -10,13 +11,13 @@ class Session:
 
     _credentials: Optional[TokenResponse]
 
-    def __init__(self, username: str, api_key: str):
+    def __init__(self, credentials: Credentials):
         self._http_session = requests.Session()
 
         self._oauth_client = Authentication()
 
-        self._username = username
-        self._api_key = api_key
+        self._username = credentials.username
+        self._api_key = credentials.api_key
 
         self._credentials = None
 
