@@ -16,32 +16,65 @@ def inventories():
 
 @inventories.command("list-languages")
 def inventories_languages():
-    raise NotImplemented()
+    raise NotImplementedError()
 
 
 @inventories.command("list-query-operators")
 def inventories_query_operators():
-    raise NotImplemented()
+    raise NotImplementedError()
 
 
 @inventories.command("list-term-types")
 def inventories_term_types():
-    raise NotImplemented()
+    raise NotImplementedError()
 
 
 @inventories.command("list-searchable-fields")
 def inventories_searchable_fields():
-    raise NotImplemented()
+    raise NotImplementedError()
 
 
 @inventories.command("list-primarities")
 def inventories_primarities():
-    raise NotImplemented()
+    raise NotImplementedError()
 
 
 @inventories.command("list-reliabilities")
 def inventories_reliabilities():
-    raise NotImplemented()
+    raise NotImplementedError()
 
 
 ## DOMAINS
+
+
+@run.command("list-domains")
+def domains():
+    raise NotImplementedError()
+
+
+@run.command("list-collections")
+def collections():
+    raise NotImplementedError()
+
+
+@run.command("list-institutions")
+def institutions():
+    raise NotImplementedError()
+
+
+## Entries
+
+
+@run.group("entries")
+def entries():
+    ...
+
+
+@entries.command("search-entries")
+def entries_search():
+    raise NotImplementedError()
+
+
+@entries.command("multi-search-entries")
+def entries_multi_search():
+    raise NotImplementedError()
