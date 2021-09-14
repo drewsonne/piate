@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Optional, Dict
 
-from dataclasses_json import dataclass_json
+from dataclasses_json import dataclass_json, Undefined
 
 from piate.api.version import APIVersion
 from piate.api.response import (
@@ -13,16 +13,29 @@ from piate.api.response import (
 from piate.api.session import Session
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class CollectionNameLanguage:
+    self: MetadataResource
+    code: str
+    name: str
+    is_official: bool
+
+
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class CollectionName:
     short_name: str
     full_name: str
+
+    year: Optional[int] = field(default=None)
+    language: Optional[CollectionNameLanguage] = field(default=None)
+
     institution_code: Optional[str] = field(default=None)
     institution_name: Optional[str] = field(default=None)
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class Collection:
     code: str
@@ -36,16 +49,10 @@ class Collection:
     update: MetadataResource
     delete: MetadataResource
 
-    @dataclass_json
-    @dataclass
-    class Compact:
-        code: str
-        id: int
-        name: CollectionName
-        description: str
-
-    def compact(self) -> Compact:
-        return Collection.Compact(self.code, self.id, self.name, self.description)
+    def compact(self) -> Dict:
+        return dict(
+            code=self.code, id=self.id, name=self.name, description=self.description
+        )
 
 
 CollectionPagedResponse = create_paged_response_class(Collection)
@@ -56,8 +63,8 @@ class Collections:
     def __init__(self, session: Session):
         self.session = session
 
-    def list_pages(self):
-        page = self.list()
+    def list(self):
+        page = self._first_page()
         yield page
 
         while page.next is not None:
@@ -66,7 +73,7 @@ class Collections:
             )
             yield page
 
-    def list(self) -> CollectionPagedResponse:
+    def _first_page(self) -> CollectionPagedResponse:
         response = self.session.get(
             "/collections",
             {"expand": "true", "offset": 0, "limit": 10},

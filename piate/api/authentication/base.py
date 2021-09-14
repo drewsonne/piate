@@ -4,14 +4,14 @@ from typing import Dict, NewType
 from datetime import datetime, timedelta
 
 import requests
-from dataclasses_json import dataclass_json
+from dataclasses_json import dataclass_json, Undefined
 
 from piate.api.version import APIVersion
 
 RefreshToken = NewType("RefreshToken", str)
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class ExpirationBase:
     access: datetime

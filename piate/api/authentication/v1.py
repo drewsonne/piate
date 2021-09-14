@@ -12,7 +12,7 @@ from piate.api.version import APIVersion
 AuthToken = NewType("AuthToken", str)
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class TokenResponse:
     token_type: str

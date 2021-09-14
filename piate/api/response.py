@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import TypeVar, List, Generic, Union, Optional
 
-from dataclasses_json import dataclass_json
+from dataclasses_json import dataclass_json, Undefined
 
 from piate.api.version import APIVersion
 
@@ -13,13 +13,13 @@ class Link:
     href: str
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class MetadataResource:
     href: str
     method: str
     accept_media_types: List[str]
-    content_media_types: Optional[List[str]] = None
+    content_media_types: Optional[List[str]] = field(default=None)
 
     def get_acceptable_api_versions(self) -> List[APIVersion]:
         mimetypes = [APIVersion.from_mimetype(m) for m in self.accept_media_types]
@@ -29,7 +29,7 @@ class MetadataResource:
 
 
 def create_paged_response_class(item_type):
-    @dataclass_json
+    @dataclass_json(undefined=Undefined.RAISE)
     @dataclass
     class PagedResponse:
         items: List[item_type]
@@ -49,7 +49,7 @@ def create_paged_response_class(item_type):
     return PagedResponse
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class MetadataType:
     self: MetadataResource
@@ -57,7 +57,7 @@ class MetadataType:
     name: str
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class MetadataEditTimestamp:
     institution: MetadataType
@@ -65,13 +65,16 @@ class MetadataEditTimestamp:
     division: Optional[MetadataType] = None
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class MetadataProtection:
     type: MetadataType
+    cascade: Optional[bool] = field(default=None)
+    level: Optional[MetadataType] = field(default=None)
+    strategy: Optional[MetadataType] = field(default=None)
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class Metadata:
     confidentiality: MetadataType

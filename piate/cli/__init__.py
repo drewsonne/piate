@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from enum import Enum
 
 import click
 
@@ -7,12 +6,8 @@ import piate
 from piate.api.client import Client
 from piate.api.credentials import Credentials
 from piate.api.session import Session
-from piate.cli.render import response, response_lines
-
-
-class Format(Enum):
-    JSON = "json"
-    JSON_LINES = "json-lines"
+from piate.cli.format import Format
+from piate.cli.render import response, response_lines, pages_response
 
 
 @dataclass
@@ -100,21 +95,13 @@ def domains(obj: ContextObj):
 @run.command("list-collections")
 @click.pass_obj
 def collections(obj: ContextObj):
-    paginator = obj.client.collections.list_pages()
-    if obj.format == Format.JSON:
-        items = []
-        for page in paginator:
-            items += page.items
-        response(items)
-    else:
-        for page in paginator:
-            response_lines(page.items)
+    pages_response(obj.client.collections.list(), obj.format)
 
 
 @run.command("list-institutions")
 @click.pass_obj
 def institutions(obj: ContextObj):
-    response(obj.client.institutions.list())
+    pages_response(obj.client.institutions.list(), obj.format)
 
 
 """

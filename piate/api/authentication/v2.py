@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import NewType, List
 
-from dataclasses_json import dataclass_json
+from dataclasses_json import dataclass_json, Undefined
 
 from piate.api.authentication.base import (
     AuthenticationBase,
@@ -15,7 +15,7 @@ IDToken = NewType("IDToken", str)
 AccessToken = NewType("AccessToken", str)
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class Expiration(ExpirationBase):
     id: datetime
@@ -24,14 +24,14 @@ class Expiration(ExpirationBase):
         return self.id >= datetime.now()
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class TokenResponseToken:
     id_token: IDToken
     access_token: AccessToken
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class TokenResponse:
     token_type: str
