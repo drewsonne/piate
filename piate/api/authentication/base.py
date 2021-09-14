@@ -32,11 +32,7 @@ class AuthenticationBase:
     PATH = "/oauth2/token"
     TOKEN_GRANT_TYPE = "password"
     EXTENDS_GRANT_TYPE = "refresh_token"
-
-    @abstractmethod
-    @property
-    def API_VERSION(self) -> AuthenticationVersion:
-        ...
+    API_VERSION: AuthenticationVersion
 
     def _generate_expiration(self) -> Dict:
         now = datetime.now()

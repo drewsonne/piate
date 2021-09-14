@@ -1,7 +1,9 @@
-from typing import Optional
+import json
+from typing import Optional, Dict, Any, Union
 
 import requests
 
+from piate.api.authentication.base import AuthenticationVersion
 from piate.api.authentication.v2 import Authentication, TokenResponse
 from piate.api.credentials import Credentials
 
@@ -10,6 +12,7 @@ class Session:
     BASE_URL: str = "https://iate.europa.eu/em-api"
 
     _credentials: Optional[TokenResponse]
+    _http_session: requests.Session
 
     def __init__(self, credentials: Credentials):
         self._http_session = requests.Session()
@@ -40,3 +43,26 @@ class Session:
                     password=self._api_key,
                 )
         return self._credentials
+
+    def get(
+        self,
+        path: str,
+        params: Dict[str, Union[int, str]],
+        version: AuthenticationVersion,
+        do_auth: bool = True,
+    ) -> Dict:
+
+        if do_auth:
+            raise NotImplementedError()
+        else:
+            response = self._http_session.get(
+                f"{self.BASE_URL}{path}",
+                params=params,
+                headers={
+                    "Accept": f"application/vnd.iate.collection+json;version={1 if version == AuthenticationVersion.V1 else 2}"
+                },
+            )
+            if not response.ok:
+                response.raise_for_status()
+
+            return response.json()

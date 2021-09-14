@@ -1,7 +1,17 @@
+from dataclasses import dataclass
+
 import click
 
 import piate
+from piate.api.client import Client
 from piate.api.credentials import Credentials
+from piate.api.session import Session
+from piate.cli.render import response
+
+
+@dataclass
+class ContextObj:
+    client: Client
 
 
 @click.group()
@@ -21,7 +31,9 @@ from piate.api.credentials import Credentials
 )
 @click.pass_context
 def run(ctx: click.Context, username: str, api_key: str):
-    ctx.obj = Credentials(username=username, api_key=api_key)
+    ctx.obj = ContextObj(
+        client=Client(Session(Credentials(username=username, api_key=api_key)))
+    )
 
 
 """
@@ -76,8 +88,9 @@ def domains():
 
 
 @run.command("list-collections")
-def collections():
-    raise NotImplementedError()
+@click.pass_obj
+def collections(obj: ContextObj):
+    response(obj.client.collections.list())
 
 
 @run.command("list-institutions")
