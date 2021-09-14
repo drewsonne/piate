@@ -1,18 +1,14 @@
 from abc import abstractmethod
 from dataclasses import dataclass
-from enum import Enum
 from typing import Dict, NewType
 from datetime import datetime, timedelta
 
 import requests
 from dataclasses_json import dataclass_json
 
+from piate.api.version import APIVersion
+
 RefreshToken = NewType("RefreshToken", str)
-
-
-class AuthenticationVersion(Enum):
-    V1 = "1"
-    V2 = "2"
 
 
 @dataclass_json
@@ -32,7 +28,7 @@ class AuthenticationBase:
     PATH = "/oauth2/token"
     TOKEN_GRANT_TYPE = "password"
     EXTENDS_GRANT_TYPE = "refresh_token"
-    API_VERSION: AuthenticationVersion
+    API_VERSION: APIVersion
 
     def _generate_expiration(self) -> Dict:
         now = datetime.now()
@@ -40,7 +36,7 @@ class AuthenticationBase:
             "access": now + timedelta(hours=3),
             "refresh": now + timedelta(hours=12),
         }
-        if self.API_VERSION == AuthenticationVersion.V2:
+        if self.API_VERSION == APIVersion.V2:
             expiration["id"] = now + timedelta(hours=3)
         return expiration
 

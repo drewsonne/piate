@@ -3,9 +3,10 @@ from typing import Optional, Dict, Any, Union
 
 import requests
 
-from piate.api.authentication.base import AuthenticationVersion
+from piate.api.version import APIVersion
 from piate.api.authentication.v2 import Authentication, TokenResponse
 from piate.api.credentials import Credentials
+from piate.api.response import MetadataResource
 
 
 class Session:
@@ -44,11 +45,23 @@ class Session:
                 )
         return self._credentials
 
+    def get_metadata_resource(self, resource: MetadataResource) -> Dict:
+
+        api_versions = resource.get_acceptable_api_versions()
+        version = api_versions[0]
+
+        response = self._http_session.get(
+            resource.href, headers={"Accept": APIVersion.to_mimetype(version)}
+        )
+        if not response.ok:
+            response.raise_for_status()
+        return response.json()
+
     def get(
         self,
         path: str,
         params: Dict[str, Union[int, str]],
-        version: AuthenticationVersion,
+        version: APIVersion,
         do_auth: bool = True,
     ) -> Dict:
 
@@ -59,7 +72,7 @@ class Session:
                 f"{self.BASE_URL}{path}",
                 params=params,
                 headers={
-                    "Accept": f"application/vnd.iate.collection+json;version={1 if version == AuthenticationVersion.V1 else 2}"
+                    "Accept": f"application/vnd.iate.collection+json;version={1 if version == APIVersion.V1 else 2}"
                 },
             )
             if not response.ok:

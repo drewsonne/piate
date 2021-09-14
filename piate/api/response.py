@@ -1,7 +1,9 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TypeVar, List, Generic, Union, Optional
 
 from dataclasses_json import dataclass_json
+
+from piate.api.version import APIVersion
 
 R = TypeVar("R")
 
@@ -19,8 +21,14 @@ class MetadataResource:
     accept_media_types: List[str]
     content_media_types: Optional[List[str]] = None
 
+    def get_acceptable_api_versions(self) -> List[APIVersion]:
+        mimetypes = [APIVersion.from_mimetype(m) for m in self.accept_media_types]
+        fitlered_mimetypes = [m for m in mimetypes if m is not None]
+        fitlered_mimetypes.sort(reverse=True)
+        return fitlered_mimetypes
 
-def create_response_class(item_type):
+
+def create_paged_response_class(item_type):
     @dataclass_json
     @dataclass
     class PagedResponse:
@@ -33,7 +41,7 @@ def create_response_class(item_type):
         self: MetadataResource
         create: MetadataResource
         search: MetadataResource
-        next: MetadataResource
+        next: Optional[MetadataResource] = field(default=None)
 
         def compact(self) -> item_type:
             return self.items

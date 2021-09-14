@@ -5,9 +5,9 @@ from dataclasses_json import dataclass_json
 
 from piate.api.authentication.base import (
     AuthenticationBase,
-    AuthenticationVersion,
     RefreshToken,
 )
+from piate.api.version import APIVersion
 
 AuthToken = NewType("AuthToken", str)
 
@@ -24,7 +24,7 @@ class TokenResponse:
 
 
 class Authentication(AuthenticationBase):
-    API_VERSION = AuthenticationVersion.V1
+    API_VERSION = APIVersion.V1
 
     def token(self, base_url: str, username: str, password: str) -> TokenResponse:
         return TokenResponse.from_dict(
