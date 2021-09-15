@@ -3,14 +3,14 @@ from typing import Optional, Dict
 
 from dataclasses_json import dataclass_json, Undefined
 
-from piate.api.version import APIVersion
+from piate.api.resources.base import BaseResource
 from piate.api.response import (
     MetadataType,
     Metadata,
     MetadataResource,
-    create_paged_response_class,
+    create_paged_response_class_v2,
 )
-from piate.api.session import Session
+from piate.api.version import APIVersion
 
 
 @dataclass_json(undefined=Undefined.RAISE)
@@ -55,15 +55,11 @@ class Collection:
         )
 
 
-CollectionPagedResponse = create_paged_response_class(Collection)
+CollectionPagedResponse = create_paged_response_class_v2(Collection)
 
 
-@dataclass(init=False)
-class Collections:
-    def __init__(self, session: Session):
-        self.session = session
-
-    def list(self):
+class Collections(BaseResource):
+    def pages(self):
         page = self._first_page()
         yield page
 

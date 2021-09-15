@@ -3,14 +3,15 @@ from typing import Optional, Dict, Any, Union
 
 import requests
 
+from piate.api import API
 from piate.api.version import APIVersion
 from piate.api.authentication.v2 import Authentication, TokenResponse
 from piate.api.credentials import Credentials
-from piate.api.response import MetadataResource
+from piate.api.response import MetadataResource, Meta
 
 
 class Session:
-    BASE_URL: str = "https://iate.europa.eu/em-api"
+    BASE_URL: str = "https://iate.europa.eu"
 
     _credentials: Optional[TokenResponse]
     _http_session: requests.Session
@@ -57,23 +58,31 @@ class Session:
             response.raise_for_status()
         return response.json()
 
+    def get_meta_resource(self, resource: Meta) -> Dict:
+        response = self._http_session.get(resource.href)
+        if not response.ok:
+            response.raise_for_status()
+        return response.json()
+
     def get(
         self,
         path: str,
-        params: Dict[str, Union[int, str]],
-        version: APIVersion,
-        do_auth: bool = True,
+        params: Optional[Dict[str, Union[int, str]]] = None,
+        version: Optional[APIVersion] = None,
+        api_type: Optional[API] = API.EM,
+        do_auth: Optional[bool] = True,
     ) -> Dict:
+
+        if params is None:
+            params = {}
 
         if do_auth:
             raise NotImplementedError()
         else:
             response = self._http_session.get(
-                f"{self.BASE_URL}{path}",
+                f"{self.BASE_URL}/{api_type.value}-api{path}",
                 params=params,
-                headers={
-                    "Accept": f"application/vnd.iate.collection+json;version={1 if version == APIVersion.V1 else 2}"
-                },
+                headers={"Accept": APIVersion.to_mimetype(version)},
             )
             if not response.ok:
                 response.raise_for_status()

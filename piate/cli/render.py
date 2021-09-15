@@ -31,11 +31,20 @@ def response_lines(obj: List[Any]):
         click.echo(json.dumps(item, cls=_IATEResponseEncoder))
 
 
-def pages_response(paginator: Iterator, format: Format):
+def pages_response_iterator(paginator: Iterator, format: Format):
     if format == Format.JSON:
-        response(reduce(lambda items, page: items + page.items, paginator, []))
+        response(list(reduce(lambda items, page: items + page.items, paginator, [])))
     elif format == Format.JSON_LINES:
         for page in paginator:
             response_lines(page.items)
+    else:
+        raise RuntimeError(f"Unexpected output format: {format=}")
+
+
+def page_response(page, format: Format):
+    if format == Format.JSON:
+        response(page)
+    elif format == Format.JSON_LINES:
+        response_lines(page.items)
     else:
         raise RuntimeError(f"Unexpected output format: {format=}")

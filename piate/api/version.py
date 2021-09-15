@@ -11,7 +11,9 @@ class APIVersion(Enum):
         return int(self.value) < int(other.value)
 
     @classmethod
-    def to_mimetype(cls, version: "APIVersion") -> str:
+    def to_mimetype(cls, version: Optional["APIVersion"] = None) -> str:
+        if version is None:
+            return "application/json"
         return f"application/vnd.iate.collection+json;version={version.value}"
 
     @classmethod

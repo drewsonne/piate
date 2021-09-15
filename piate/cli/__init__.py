@@ -7,7 +7,7 @@ from piate.api.client import Client
 from piate.api.credentials import Credentials
 from piate.api.session import Session
 from piate.cli.format import Format
-from piate.cli.render import response, response_lines, pages_response
+from piate.cli.render import pages_response_iterator, page_response
 
 
 @dataclass
@@ -89,19 +89,19 @@ Domains
 @run.command("list-domains")
 @click.pass_obj
 def domains(obj: ContextObj):
-    response(obj.client.domains.list())
+    page_response(obj.client.domains.list(), obj.format)
 
 
 @run.command("list-collections")
 @click.pass_obj
 def collections(obj: ContextObj):
-    pages_response(obj.client.collections.list(), obj.format)
+    pages_response_iterator(obj.client.collections.pages(), obj.format)
 
 
 @run.command("list-institutions")
 @click.pass_obj
 def institutions(obj: ContextObj):
-    pages_response(obj.client.institutions.list(), obj.format)
+    pages_response_iterator(obj.client.institutions.pages(), obj.format)
 
 
 """

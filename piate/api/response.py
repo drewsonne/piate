@@ -28,7 +28,7 @@ class MetadataResource:
         return fitlered_mimetypes
 
 
-def create_paged_response_class(item_type):
+def create_paged_response_class_v2(item_type):
     @dataclass_json(undefined=Undefined.RAISE)
     @dataclass
     class PagedResponse:
@@ -43,10 +43,36 @@ def create_paged_response_class(item_type):
         search: MetadataResource
         next: Optional[MetadataResource] = field(default=None)
 
-        def compact(self) -> item_type:
+        def compact(self) -> List[item_type]:
             return self.items
 
     return PagedResponse
+
+
+def create_paged_response_class_generic(item_type):
+    @dataclass_json(undefined=Undefined.RAISE)
+    @dataclass
+    class PagedResponse:
+        items: List[item_type]
+
+        offset: int
+        limit: int
+        size: int
+
+        meta: Meta
+
+        next: Optional[Meta] = field(default=None)
+
+        def compact(self) -> List[item_type]:
+            return self.items
+
+    return PagedResponse
+
+
+@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class Meta:
+    href: str
 
 
 @dataclass_json(undefined=Undefined.RAISE)
