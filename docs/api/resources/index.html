@@ -22,14 +22,23 @@
 <h1 class="title">Module <code>piate.api.resources</code></h1>
 </header>
 <section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from piate.api.session import Session
+
+
+class BaseResource:
+    session: Session
+
+    def __init__(self, session: Session):
+        self.session = session</code></pre>
+</details>
 </section>
 <section>
 <h2 class="section-title" id="header-submodules">Sub-modules</h2>
 <dl>
-<dt><code class="name"><a title="piate.api.resources.base" href="base.html">piate.api.resources.base</a></code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
 <dt><code class="name"><a title="piate.api.resources.collections" href="collections.html">piate.api.resources.collections</a></code></dt>
 <dd>
 <div class="desc"></div>
@@ -53,6 +62,40 @@
 <section>
 </section>
 <section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="piate.api.resources.BaseResource"><code class="flex name class">
+<span>class <span class="ident">BaseResource</span></span>
+<span>(</span><span>session: <a title="piate.api.session.Session" href="../session.html#piate.api.session.Session">Session</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BaseResource:
+    session: Session
+
+    def __init__(self, session: Session):
+        self.session = session</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="piate.api.resources.collections.Collections" href="collections.html#piate.api.resources.collections.Collections">Collections</a></li>
+<li><a title="piate.api.resources.domains.Domains" href="domains.html#piate.api.resources.domains.Domains">Domains</a></li>
+<li><a title="piate.api.resources.institutions.Institutions" href="institutions.html#piate.api.resources.institutions.Institutions">Institutions</a></li>
+<li><a title="piate.api.resources.inventories.Inventories" href="inventories.html#piate.api.resources.inventories.Inventories">Inventories</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="piate.api.resources.BaseResource.session"><code class="name">var <span class="ident">session</span> : <a title="piate.api.session.Session" href="../session.html#piate.api.session.Session">Session</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
 </section>
 </article>
 <nav id="sidebar">
@@ -68,11 +111,20 @@
 </li>
 <li><h3><a href="#header-submodules">Sub-modules</a></h3>
 <ul>
-<li><code><a title="piate.api.resources.base" href="base.html">piate.api.resources.base</a></code></li>
 <li><code><a title="piate.api.resources.collections" href="collections.html">piate.api.resources.collections</a></code></li>
 <li><code><a title="piate.api.resources.domains" href="domains.html">piate.api.resources.domains</a></code></li>
 <li><code><a title="piate.api.resources.institutions" href="institutions.html">piate.api.resources.institutions</a></code></li>
 <li><code><a title="piate.api.resources.inventories" href="inventories.html">piate.api.resources.inventories</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="piate.api.resources.BaseResource" href="#piate.api.resources.BaseResource">BaseResource</a></code></h4>
+<ul class="">
+<li><code><a title="piate.api.resources.BaseResource.session" href="#piate.api.resources.BaseResource.session">session</a></code></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

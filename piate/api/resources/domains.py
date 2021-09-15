@@ -1,11 +1,10 @@
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from typing import List, Optional, Dict
 
 from dataclasses_json import Undefined, dataclass_json
 
-from piate.api.resources.base import BaseResource
+from piate.api.resources import BaseResource
 from piate.api.response import create_paged_response_class_generic
-from piate.api.session import Session
 
 
 @dataclass_json(undefined=Undefined.RAISE)

@@ -28,11 +28,15 @@
 </summary>
 <pre><code class="python">from typing import Optional
 
-# We use the longers paths here as PyCharm will suggest imports from here for other classes
+# We use the longer paths here as PyCharm will suggest imports from here for other classes
 from piate.api import client as client_mod, session as sessions, credentials, resources
 
 
 class MissingAuthentication(Exception):
+    &#34;&#34;&#34;
+    Raise when no authentication information is provided
+    &#34;&#34;&#34;
+
     def __init__(self):
         super().__init__(
             &#34;Either a &#39;session&#39; object or a &#39;username&#39; and &#39;api_key&#39; must be provided.&#34;
@@ -44,6 +48,11 @@ def client(
     api_key: Optional[str] = None,
     session: Optional[sessions.Session] = None,
 ):
+    &#34;&#34;&#34;
+    Library entrypoint. If `username` and `api_key` (conflicts with `session`) are supplied they are used to
+    authenticate against the API. If `session` (conflicts with `username` and `api_key`) is provided, it is used in
+    place of `username` and `api_key`.
+    &#34;&#34;&#34;
     has_login = (username is not None) and (api_key is not None)
     has_session = session is None
 
@@ -82,7 +91,9 @@ __all__ = [&#34;client&#34;]</code></pre>
 <span>def <span class="ident">client</span></span>(<span>username: Optional[str] = None, api_key: Optional[str] = None, session: Optional[<a title="piate.api.session.Session" href="api/session.html#piate.api.session.Session">Session</a>] = None)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Library entrypoint. If <code>username</code> and <code>api_key</code> (conflicts with <code>session</code>) are supplied they are used to
+authenticate against the API. If <code>session</code> (conflicts with <code>username</code> and <code>api_key</code>) is provided, it is used in
+place of <code>username</code> and <code>api_key</code>.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -92,6 +103,11 @@ __all__ = [&#34;client&#34;]</code></pre>
     api_key: Optional[str] = None,
     session: Optional[sessions.Session] = None,
 ):
+    &#34;&#34;&#34;
+    Library entrypoint. If `username` and `api_key` (conflicts with `session`) are supplied they are used to
+    authenticate against the API. If `session` (conflicts with `username` and `api_key`) is provided, it is used in
+    place of `username` and `api_key`.
+    &#34;&#34;&#34;
     has_login = (username is not None) and (api_key is not None)
     has_session = session is None
 

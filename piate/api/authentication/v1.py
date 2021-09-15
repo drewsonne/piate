@@ -3,7 +3,7 @@ from typing import List, Dict, NewType
 
 from dataclasses_json import dataclass_json, Undefined
 
-from piate.api.authentication.base import (
+from piate.api.authentication import (
     AuthenticationBase,
     RefreshToken,
     ExpirationBase,
@@ -16,6 +16,8 @@ AuthToken = NewType("AuthToken", str)
 @dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class TokenResponse:
+    """Response from the Authentication API"""
+
     token_type: str
     tokens: List[AuthToken]
     refresh_token: RefreshToken

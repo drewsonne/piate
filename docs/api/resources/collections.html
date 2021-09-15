@@ -27,11 +27,11 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">from dataclasses import dataclass, field
-from typing import Optional, Dict
+from typing import Optional, Dict, Generator
 
 from dataclasses_json import dataclass_json, Undefined
 
-from piate.api.resources.base import BaseResource
+from piate.api.resources import BaseResource
 from piate.api.response import (
     MetadataType,
     Metadata,
@@ -87,7 +87,7 @@ CollectionPagedResponse = create_paged_response_class_v2(Collection)
 
 
 class Collections(BaseResource):
-    def pages(self):
+    def pages(self) -&gt; Generator[CollectionPagedResponse, None, None]:
         page = self._first_page()
         yield page
 
@@ -713,7 +713,7 @@ def schema(cls: Type[A],
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Collections(BaseResource):
-    def pages(self):
+    def pages(self) -&gt; Generator[CollectionPagedResponse, None, None]:
         page = self._first_page()
         yield page
 
@@ -734,7 +734,7 @@ def schema(cls: Type[A],
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="piate.api.resources.base.BaseResource" href="base.html#piate.api.resources.base.BaseResource">BaseResource</a></li>
+<li><a title="piate.api.resources.BaseResource" href="index.html#piate.api.resources.BaseResource">BaseResource</a></li>
 </ul>
 <h3>Class variables</h3>
 <dl>
@@ -746,7 +746,7 @@ def schema(cls: Type[A],
 <h3>Methods</h3>
 <dl>
 <dt id="piate.api.resources.collections.Collections.pages"><code class="name flex">
-<span>def <span class="ident">pages</span></span>(<span>self)</span>
+<span>def <span class="ident">pages</span></span>(<span>self) ‑> Generator[<a title="piate.api.response.create_paged_response_class_v2" href="../response.html#piate.api.response.create_paged_response_class_v2">create_paged_response_class_v2()</a>.<locals>.PagedResponse, None, None]</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -754,7 +754,7 @@ def schema(cls: Type[A],
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def pages(self):
+<pre><code class="python">def pages(self) -&gt; Generator[CollectionPagedResponse, None, None]:
     page = self._first_page()
     yield page
 

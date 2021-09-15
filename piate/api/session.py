@@ -1,13 +1,12 @@
-import json
-from typing import Optional, Dict, Any, Union
+from typing import Optional, Dict, Union
 
 import requests
 
 from piate.api import API
-from piate.api.version import APIVersion
 from piate.api.authentication.v2 import Authentication, TokenResponse
 from piate.api.credentials import Credentials
 from piate.api.response import MetadataResource, Meta
+from piate.api.version import APIVersion
 
 
 class Session:

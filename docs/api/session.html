@@ -26,16 +26,15 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import json
-from typing import Optional, Dict, Any, Union
+<pre><code class="python">from typing import Optional, Dict, Union
 
 import requests
 
 from piate.api import API
-from piate.api.version import APIVersion
 from piate.api.authentication.v2 import Authentication, TokenResponse
 from piate.api.credentials import Credentials
 from piate.api.response import MetadataResource, Meta
+from piate.api.version import APIVersion
 
 
 class Session:

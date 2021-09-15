@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
-from typing import Optional, Dict
+from typing import Optional, Dict, Generator
 
 from dataclasses_json import dataclass_json, Undefined
 
-from piate.api.resources.base import BaseResource
+from piate.api.resources import BaseResource
 from piate.api.response import (
     MetadataType,
     Metadata,
@@ -59,7 +59,7 @@ CollectionPagedResponse = create_paged_response_class_v2(Collection)
 
 
 class Collections(BaseResource):
-    def pages(self):
+    def pages(self) -> Generator[CollectionPagedResponse, None, None]:
         page = self._first_page()
         yield page
 

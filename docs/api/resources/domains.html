@@ -26,14 +26,13 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from dataclasses import dataclass, field, asdict
+<pre><code class="python">from dataclasses import dataclass, field
 from typing import List, Optional, Dict
 
 from dataclasses_json import Undefined, dataclass_json
 
-from piate.api.resources.base import BaseResource
+from piate.api.resources import BaseResource
 from piate.api.response import create_paged_response_class_generic
-from piate.api.session import Session
 
 
 @dataclass_json(undefined=Undefined.RAISE)
@@ -343,7 +342,7 @@ def schema(cls: Type[A],
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="piate.api.resources.base.BaseResource" href="base.html#piate.api.resources.base.BaseResource">BaseResource</a></li>
+<li><a title="piate.api.resources.BaseResource" href="index.html#piate.api.resources.BaseResource">BaseResource</a></li>
 </ul>
 <h3>Class variables</h3>
 <dl>

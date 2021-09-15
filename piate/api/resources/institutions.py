@@ -4,7 +4,7 @@ from typing import Optional, Dict
 from dataclasses_json import dataclass_json, Undefined
 
 from piate.api import API
-from piate.api.resources.base import BaseResource
+from piate.api.resources import BaseResource
 from piate.api.response import create_paged_response_class_generic, Meta
 
 

@@ -4,7 +4,7 @@ from typing import NewType, List
 
 from dataclasses_json import dataclass_json, Undefined
 
-from piate.api.authentication.base import (
+from piate.api.authentication import (
     AuthenticationBase,
     RefreshToken,
     ExpirationBase,

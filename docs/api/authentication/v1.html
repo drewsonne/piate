@@ -31,7 +31,7 @@ from typing import List, Dict, NewType
 
 from dataclasses_json import dataclass_json, Undefined
 
-from piate.api.authentication.base import (
+from piate.api.authentication import (
     AuthenticationBase,
     RefreshToken,
     ExpirationBase,
@@ -44,6 +44,8 @@ AuthToken = NewType(&#34;AuthToken&#34;, str)
 @dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class TokenResponse:
+    &#34;&#34;&#34;Response from the Authentication API&#34;&#34;&#34;
+
     token_type: str
     tokens: List[AuthToken]
     refresh_token: RefreshToken
@@ -99,7 +101,7 @@ class Authentication(AuthenticationBase):
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="piate.api.authentication.base.AuthenticationBase" href="base.html#piate.api.authentication.base.AuthenticationBase">AuthenticationBase</a></li>
+<li><a title="piate.api.authentication.AuthenticationBase" href="index.html#piate.api.authentication.AuthenticationBase">AuthenticationBase</a></li>
 </ul>
 <h3>Class variables</h3>
 <dl>
@@ -144,10 +146,10 @@ class Authentication(AuthenticationBase):
 </dd>
 <dt id="piate.api.authentication.v1.TokenResponse"><code class="flex name class">
 <span>class <span class="ident">TokenResponse</span></span>
-<span>(</span><span>token_type: str, tokens: List[AuthToken], refresh_token: RefreshToken, permission_name_by_id: Dict[str, str], role_group_name_by_id: Dict[str, str], expiration: <a title="piate.api.authentication.base.ExpirationBase" href="base.html#piate.api.authentication.base.ExpirationBase">ExpirationBase</a>)</span>
+<span>(</span><span>token_type: str, tokens: List[AuthToken], refresh_token: RefreshToken, permission_name_by_id: Dict[str, str], role_group_name_by_id: Dict[str, str], expiration: <a title="piate.api.authentication.ExpirationBase" href="index.html#piate.api.authentication.ExpirationBase">ExpirationBase</a>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>TokenResponse(token_type: str, tokens: List[AuthToken], refresh_token: <function NewType.\<locals>.new_type at 0x10655bc10>, permission_name_by_id: Dict[str, str], role_group_name_by_id: Dict[str, str], expiration: piate.api.authentication.base.ExpirationBase)</p></div>
+<div class="desc"><p>Response from the Authentication API</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -155,6 +157,8 @@ class Authentication(AuthenticationBase):
 <pre><code class="python">@dataclass_json(undefined=Undefined.RAISE)
 @dataclass
 class TokenResponse:
+    &#34;&#34;&#34;Response from the Authentication API&#34;&#34;&#34;
+
     token_type: str
     tokens: List[AuthToken]
     refresh_token: RefreshToken
@@ -168,7 +172,7 @@ class TokenResponse:
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="piate.api.authentication.v1.TokenResponse.expiration"><code class="name">var <span class="ident">expiration</span> : <a title="piate.api.authentication.base.ExpirationBase" href="base.html#piate.api.authentication.base.ExpirationBase">ExpirationBase</a></code></dt>
+<dt id="piate.api.authentication.v1.TokenResponse.expiration"><code class="name">var <span class="ident">expiration</span> : <a title="piate.api.authentication.ExpirationBase" href="index.html#piate.api.authentication.ExpirationBase">ExpirationBase</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>

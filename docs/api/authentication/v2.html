@@ -32,7 +32,7 @@ from typing import NewType, List
 
 from dataclasses_json import dataclass_json, Undefined
 
-from piate.api.authentication.base import (
+from piate.api.authentication import (
     AuthenticationBase,
     RefreshToken,
     ExpirationBase,
@@ -115,7 +115,7 @@ class Authentication(AuthenticationBase):
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="piate.api.authentication.base.AuthenticationBase" href="base.html#piate.api.authentication.base.AuthenticationBase">AuthenticationBase</a></li>
+<li><a title="piate.api.authentication.AuthenticationBase" href="index.html#piate.api.authentication.AuthenticationBase">AuthenticationBase</a></li>
 </ul>
 <h3>Class variables</h3>
 <dl>
@@ -178,7 +178,7 @@ class Expiration(ExpirationBase):
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="piate.api.authentication.base.ExpirationBase" href="base.html#piate.api.authentication.base.ExpirationBase">ExpirationBase</a></li>
+<li><a title="piate.api.authentication.ExpirationBase" href="index.html#piate.api.authentication.ExpirationBase">ExpirationBase</a></li>
 </ul>
 <h3>Class variables</h3>
 <dl>
@@ -344,7 +344,7 @@ def schema(cls: Type[A],
 <span>(</span><span>token_type: str, refresh_token: RefreshToken, tokens: List[<a title="piate.api.authentication.v2.TokenResponseToken" href="#piate.api.authentication.v2.TokenResponseToken">TokenResponseToken</a>], expiration: <a title="piate.api.authentication.v2.Expiration" href="#piate.api.authentication.v2.Expiration">Expiration</a>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>TokenResponse(token_type: str, refresh_token: <function NewType.\<locals>.new_type at 0x10655bc10>, tokens: List[piate.api.authentication.v2.TokenResponseToken], expiration: piate.api.authentication.v2.Expiration)</p></div>
+<div class="desc"><p>TokenResponse(token_type: str, refresh_token: <function NewType.\<locals>.new_type at 0x105cf65e0>, tokens: List[piate.api.authentication.v2.TokenResponseToken], expiration: piate.api.authentication.v2.Expiration)</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -520,7 +520,7 @@ def schema(cls: Type[A],
 <span>(</span><span>id_token: IDToken, access_token: AccessToken)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>TokenResponseToken(id_token: <function NewType.\<locals>.new_type at 0x10655baf0>, access_token: <function NewType.\<locals>.new_type at 0x10655bca0>)</p></div>
+<div class="desc"><p>TokenResponseToken(id_token: <function NewType.\<locals>.new_type at 0x105fca550>, access_token: <function NewType.\<locals>.new_type at 0x1061543a0>)</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
