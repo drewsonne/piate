@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="piate",
-    version="0.1.0",
+    version="0.1.1",
     packages=["piate"],
     url="https://www.github.com/drewsonne/piate",
     license="Apache",
