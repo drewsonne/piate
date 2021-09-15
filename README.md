@@ -11,6 +11,7 @@ pip install piate
 # Library
 
  - [client()](#client)
+ - [collection](#collections)
 
 ## <a name="client">client(**kwargs)</a>
 
@@ -47,8 +48,7 @@ iate_client = piate.client(
 )
 ```
 
-
-## <a name="collection"></a>Collections
+## <a name="collections"></a>Collections
 
 A resource representing collections
 
