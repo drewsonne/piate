@@ -1,5 +1,5 @@
 import pathlib
-from setuptools import setup
+from setuptools import setup, find_packages
 
 # The directory containing this file
 HERE = pathlib.Path(__file__).parent
@@ -9,8 +9,8 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="piate",
-    version="0.1.2",
-    packages=["piate"],
+    version="0.1.3",
+    packages=find_packages(exclude=("tests",)),
     include_package_data=True,
     url="https://www.github.com/drewsonne/piate",
     license="Apache",
