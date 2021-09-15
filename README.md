@@ -9,5 +9,9 @@ pip install piate
 ```
 
 ## CLI tool
-You can 
 
+Currently working commands:
+
+ - `iate list-collections`
+ - `iate list-domains`
+ - `iate list-institutions`
