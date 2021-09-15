@@ -1,11 +1,12 @@
 from dataclasses import dataclass
 from typing import List, Dict, NewType
 
-from dataclasses_json import dataclass_json
+from dataclasses_json import dataclass_json, Undefined
 
 from piate.api.authentication.base import (
     AuthenticationBase,
     RefreshToken,
+    ExpirationBase,
 )
 from piate.api.version import APIVersion
 
@@ -18,8 +19,8 @@ class TokenResponse:
     token_type: str
     tokens: List[AuthToken]
     refresh_token: RefreshToken
-    permission_name_by_id: Dict[str:str]
-    role_group_name_by_id: Dict[str:str]
+    permission_name_by_id: Dict[str, str]
+    role_group_name_by_id: Dict[str, str]
     expiration: ExpirationBase
 
 

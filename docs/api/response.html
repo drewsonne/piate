@@ -1,0 +1,1409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>piate.api.response API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>piate.api.response</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from dataclasses import dataclass, field
+from typing import TypeVar, List, Generic, Union, Optional
+
+from dataclasses_json import dataclass_json, Undefined
+
+from piate.api.version import APIVersion
+
+R = TypeVar(&#34;R&#34;)
+
+
+@dataclass
+class Link:
+    href: str
+
+
+@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class MetadataResource:
+    href: str
+    method: str
+    accept_media_types: List[str]
+    content_media_types: Optional[List[str]] = field(default=None)
+
+    def get_acceptable_api_versions(self) -&gt; List[APIVersion]:
+        mimetypes = [APIVersion.from_mimetype(m) for m in self.accept_media_types]
+        fitlered_mimetypes = [m for m in mimetypes if m is not None]
+        fitlered_mimetypes.sort(reverse=True)
+        return fitlered_mimetypes
+
+
+def create_paged_response_class_v2(item_type):
+    @dataclass_json(undefined=Undefined.RAISE)
+    @dataclass
+    class PagedResponse:
+        items: List[item_type]
+
+        offset: int
+        limit: int
+        size: int
+
+        self: MetadataResource
+        create: MetadataResource
+        search: MetadataResource
+        next: Optional[MetadataResource] = field(default=None)
+
+        def compact(self) -&gt; List[item_type]:
+            return self.items
+
+    return PagedResponse
+
+
+def create_paged_response_class_generic(item_type):
+    @dataclass_json(undefined=Undefined.RAISE)
+    @dataclass
+    class PagedResponse:
+        items: List[item_type]
+
+        meta: Meta
+
+        offset: Optional[int] = field(default=None)
+        limit: Optional[int] = field(default=None)
+        size: Optional[int] = field(default=None)
+
+        next: Optional[Meta] = field(default=None)
+
+        def compact(self) -&gt; List[item_type]:
+            return self.items
+
+    return PagedResponse
+
+
+@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class Meta:
+    href: str
+
+
+@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class MetadataType:
+    self: MetadataResource
+    code: Union[int, str]
+    name: str
+
+
+@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class MetadataEditTimestamp:
+    institution: MetadataType
+    timestamp: str
+    division: Optional[MetadataType] = None
+
+
+@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class MetadataProtection:
+    type: MetadataType
+    cascade: Optional[bool] = field(default=None)
+    level: Optional[MetadataType] = field(default=None)
+    strategy: Optional[MetadataType] = field(default=None)
+
+
+@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class Metadata:
+    confidentiality: MetadataType
+    creation: MetadataEditTimestamp
+    modification: MetadataEditTimestamp
+    protection: MetadataProtection</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="piate.api.response.create_paged_response_class_generic"><code class="name flex">
+<span>def <span class="ident">create_paged_response_class_generic</span></span>(<span>item_type)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_paged_response_class_generic(item_type):
+    @dataclass_json(undefined=Undefined.RAISE)
+    @dataclass
+    class PagedResponse:
+        items: List[item_type]
+
+        meta: Meta
+
+        offset: Optional[int] = field(default=None)
+        limit: Optional[int] = field(default=None)
+        size: Optional[int] = field(default=None)
+
+        next: Optional[Meta] = field(default=None)
+
+        def compact(self) -&gt; List[item_type]:
+            return self.items
+
+    return PagedResponse</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.create_paged_response_class_v2"><code class="name flex">
+<span>def <span class="ident">create_paged_response_class_v2</span></span>(<span>item_type)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_paged_response_class_v2(item_type):
+    @dataclass_json(undefined=Undefined.RAISE)
+    @dataclass
+    class PagedResponse:
+        items: List[item_type]
+
+        offset: int
+        limit: int
+        size: int
+
+        self: MetadataResource
+        create: MetadataResource
+        search: MetadataResource
+        next: Optional[MetadataResource] = field(default=None)
+
+        def compact(self) -&gt; List[item_type]:
+            return self.items
+
+    return PagedResponse</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="piate.api.response.Link"><code class="flex name class">
+<span>class <span class="ident">Link</span></span>
+<span>(</span><span>href: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Link(href: str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class Link:
+    href: str</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="piate.api.response.Link.href"><code class="name">var <span class="ident">href</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="piate.api.response.Meta"><code class="flex name class">
+<span>class <span class="ident">Meta</span></span>
+<span>(</span><span>href: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Meta(href: str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class Meta:
+    href: str</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="piate.api.response.Meta.dataclass_json_config"><code class="name">var <span class="ident">dataclass_json_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.Meta.href"><code class="name">var <span class="ident">href</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="piate.api.response.Meta.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>kvs: Union[dict, list, str, int, float, bool, ForwardRef(None)], *, infer_missing=False) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_dict(cls: Type[A],
+              kvs: Json,
+              *,
+              infer_missing=False) -&gt; A:
+    return _decode_dataclass(cls, kvs, infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.Meta.from_json"><code class="name flex">
+<span>def <span class="ident">from_json</span></span>(<span>s: Union[str, bytes, bytearray], *, parse_float=None, parse_int=None, parse_constant=None, infer_missing=False, **kw) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_json(cls: Type[A],
+              s: JsonData,
+              *,
+              parse_float=None,
+              parse_int=None,
+              parse_constant=None,
+              infer_missing=False,
+              **kw) -&gt; A:
+    kvs = json.loads(s,
+                     parse_float=parse_float,
+                     parse_int=parse_int,
+                     parse_constant=parse_constant,
+                     **kw)
+    return cls.from_dict(kvs, infer_missing=infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.Meta.schema"><code class="name flex">
+<span>def <span class="ident">schema</span></span>(<span>*, infer_missing: bool = False, only=None, exclude=(), many: bool = False, context=None, load_only=(), dump_only=(), partial: bool = False, unknown=None) ‑> dataclasses_json.mm.SchemaF[~A]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def schema(cls: Type[A],
+           *,
+           infer_missing: bool = False,
+           only=None,
+           exclude=(),
+           many: bool = False,
+           context=None,
+           load_only=(),
+           dump_only=(),
+           partial: bool = False,
+           unknown=None) -&gt; SchemaType:
+    Schema = build_schema(cls, DataClassJsonMixin, infer_missing, partial)
+
+    if unknown is None:
+        undefined_parameter_action = _undefined_parameter_action_safe(cls)
+        if undefined_parameter_action is not None:
+            # We can just make use of the same-named mm keywords
+            unknown = undefined_parameter_action.name.lower()
+
+    return Schema(only=only,
+                  exclude=exclude,
+                  many=many,
+                  context=context,
+                  load_only=load_only,
+                  dump_only=dump_only,
+                  partial=partial,
+                  unknown=unknown)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="piate.api.response.Meta.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self, encode_json=False) ‑> Dict[str, Union[dict, list, str, int, float, bool, ForwardRef(None)]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self, encode_json=False) -&gt; Dict[str, Json]:
+    return _asdict(self, encode_json=encode_json)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.Meta.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self, *, skipkeys: bool = False, ensure_ascii: bool = True, check_circular: bool = True, allow_nan: bool = True, indent: Union[int, str, ForwardRef(None)] = None, separators: Tuple[str, str] = None, default: Callable = None, sort_keys: bool = False, **kw) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self,
+            *,
+            skipkeys: bool = False,
+            ensure_ascii: bool = True,
+            check_circular: bool = True,
+            allow_nan: bool = True,
+            indent: Optional[Union[int, str]] = None,
+            separators: Tuple[str, str] = None,
+            default: Callable = None,
+            sort_keys: bool = False,
+            **kw) -&gt; str:
+    return json.dumps(self.to_dict(encode_json=False),
+                      cls=_ExtendedEncoder,
+                      skipkeys=skipkeys,
+                      ensure_ascii=ensure_ascii,
+                      check_circular=check_circular,
+                      allow_nan=allow_nan,
+                      indent=indent,
+                      separators=separators,
+                      default=default,
+                      sort_keys=sort_keys,
+                      **kw)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="piate.api.response.Metadata"><code class="flex name class">
+<span>class <span class="ident">Metadata</span></span>
+<span>(</span><span>confidentiality: <a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a>, creation: <a title="piate.api.response.MetadataEditTimestamp" href="#piate.api.response.MetadataEditTimestamp">MetadataEditTimestamp</a>, modification: <a title="piate.api.response.MetadataEditTimestamp" href="#piate.api.response.MetadataEditTimestamp">MetadataEditTimestamp</a>, protection: <a title="piate.api.response.MetadataProtection" href="#piate.api.response.MetadataProtection">MetadataProtection</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Metadata(confidentiality: piate.api.response.MetadataType, creation: piate.api.response.MetadataEditTimestamp, modification: piate.api.response.MetadataEditTimestamp, protection: piate.api.response.MetadataProtection)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class Metadata:
+    confidentiality: MetadataType
+    creation: MetadataEditTimestamp
+    modification: MetadataEditTimestamp
+    protection: MetadataProtection</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="piate.api.response.Metadata.confidentiality"><code class="name">var <span class="ident">confidentiality</span> : <a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.Metadata.creation"><code class="name">var <span class="ident">creation</span> : <a title="piate.api.response.MetadataEditTimestamp" href="#piate.api.response.MetadataEditTimestamp">MetadataEditTimestamp</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.Metadata.dataclass_json_config"><code class="name">var <span class="ident">dataclass_json_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.Metadata.modification"><code class="name">var <span class="ident">modification</span> : <a title="piate.api.response.MetadataEditTimestamp" href="#piate.api.response.MetadataEditTimestamp">MetadataEditTimestamp</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.Metadata.protection"><code class="name">var <span class="ident">protection</span> : <a title="piate.api.response.MetadataProtection" href="#piate.api.response.MetadataProtection">MetadataProtection</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="piate.api.response.Metadata.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>kvs: Union[dict, list, str, int, float, bool, ForwardRef(None)], *, infer_missing=False) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_dict(cls: Type[A],
+              kvs: Json,
+              *,
+              infer_missing=False) -&gt; A:
+    return _decode_dataclass(cls, kvs, infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.Metadata.from_json"><code class="name flex">
+<span>def <span class="ident">from_json</span></span>(<span>s: Union[str, bytes, bytearray], *, parse_float=None, parse_int=None, parse_constant=None, infer_missing=False, **kw) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_json(cls: Type[A],
+              s: JsonData,
+              *,
+              parse_float=None,
+              parse_int=None,
+              parse_constant=None,
+              infer_missing=False,
+              **kw) -&gt; A:
+    kvs = json.loads(s,
+                     parse_float=parse_float,
+                     parse_int=parse_int,
+                     parse_constant=parse_constant,
+                     **kw)
+    return cls.from_dict(kvs, infer_missing=infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.Metadata.schema"><code class="name flex">
+<span>def <span class="ident">schema</span></span>(<span>*, infer_missing: bool = False, only=None, exclude=(), many: bool = False, context=None, load_only=(), dump_only=(), partial: bool = False, unknown=None) ‑> dataclasses_json.mm.SchemaF[~A]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def schema(cls: Type[A],
+           *,
+           infer_missing: bool = False,
+           only=None,
+           exclude=(),
+           many: bool = False,
+           context=None,
+           load_only=(),
+           dump_only=(),
+           partial: bool = False,
+           unknown=None) -&gt; SchemaType:
+    Schema = build_schema(cls, DataClassJsonMixin, infer_missing, partial)
+
+    if unknown is None:
+        undefined_parameter_action = _undefined_parameter_action_safe(cls)
+        if undefined_parameter_action is not None:
+            # We can just make use of the same-named mm keywords
+            unknown = undefined_parameter_action.name.lower()
+
+    return Schema(only=only,
+                  exclude=exclude,
+                  many=many,
+                  context=context,
+                  load_only=load_only,
+                  dump_only=dump_only,
+                  partial=partial,
+                  unknown=unknown)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="piate.api.response.Metadata.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self, encode_json=False) ‑> Dict[str, Union[dict, list, str, int, float, bool, ForwardRef(None)]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self, encode_json=False) -&gt; Dict[str, Json]:
+    return _asdict(self, encode_json=encode_json)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.Metadata.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self, *, skipkeys: bool = False, ensure_ascii: bool = True, check_circular: bool = True, allow_nan: bool = True, indent: Union[int, str, ForwardRef(None)] = None, separators: Tuple[str, str] = None, default: Callable = None, sort_keys: bool = False, **kw) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self,
+            *,
+            skipkeys: bool = False,
+            ensure_ascii: bool = True,
+            check_circular: bool = True,
+            allow_nan: bool = True,
+            indent: Optional[Union[int, str]] = None,
+            separators: Tuple[str, str] = None,
+            default: Callable = None,
+            sort_keys: bool = False,
+            **kw) -&gt; str:
+    return json.dumps(self.to_dict(encode_json=False),
+                      cls=_ExtendedEncoder,
+                      skipkeys=skipkeys,
+                      ensure_ascii=ensure_ascii,
+                      check_circular=check_circular,
+                      allow_nan=allow_nan,
+                      indent=indent,
+                      separators=separators,
+                      default=default,
+                      sort_keys=sort_keys,
+                      **kw)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="piate.api.response.MetadataEditTimestamp"><code class="flex name class">
+<span>class <span class="ident">MetadataEditTimestamp</span></span>
+<span>(</span><span>institution: <a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a>, timestamp: str, division: Optional[<a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a>] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>MetadataEditTimestamp(institution: piate.api.response.MetadataType, timestamp: str, division: Optional[piate.api.response.MetadataType] = None)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class MetadataEditTimestamp:
+    institution: MetadataType
+    timestamp: str
+    division: Optional[MetadataType] = None</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="piate.api.response.MetadataEditTimestamp.dataclass_json_config"><code class="name">var <span class="ident">dataclass_json_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataEditTimestamp.division"><code class="name">var <span class="ident">division</span> : Optional[<a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataEditTimestamp.institution"><code class="name">var <span class="ident">institution</span> : <a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataEditTimestamp.timestamp"><code class="name">var <span class="ident">timestamp</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="piate.api.response.MetadataEditTimestamp.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>kvs: Union[dict, list, str, int, float, bool, ForwardRef(None)], *, infer_missing=False) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_dict(cls: Type[A],
+              kvs: Json,
+              *,
+              infer_missing=False) -&gt; A:
+    return _decode_dataclass(cls, kvs, infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataEditTimestamp.from_json"><code class="name flex">
+<span>def <span class="ident">from_json</span></span>(<span>s: Union[str, bytes, bytearray], *, parse_float=None, parse_int=None, parse_constant=None, infer_missing=False, **kw) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_json(cls: Type[A],
+              s: JsonData,
+              *,
+              parse_float=None,
+              parse_int=None,
+              parse_constant=None,
+              infer_missing=False,
+              **kw) -&gt; A:
+    kvs = json.loads(s,
+                     parse_float=parse_float,
+                     parse_int=parse_int,
+                     parse_constant=parse_constant,
+                     **kw)
+    return cls.from_dict(kvs, infer_missing=infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataEditTimestamp.schema"><code class="name flex">
+<span>def <span class="ident">schema</span></span>(<span>*, infer_missing: bool = False, only=None, exclude=(), many: bool = False, context=None, load_only=(), dump_only=(), partial: bool = False, unknown=None) ‑> dataclasses_json.mm.SchemaF[~A]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def schema(cls: Type[A],
+           *,
+           infer_missing: bool = False,
+           only=None,
+           exclude=(),
+           many: bool = False,
+           context=None,
+           load_only=(),
+           dump_only=(),
+           partial: bool = False,
+           unknown=None) -&gt; SchemaType:
+    Schema = build_schema(cls, DataClassJsonMixin, infer_missing, partial)
+
+    if unknown is None:
+        undefined_parameter_action = _undefined_parameter_action_safe(cls)
+        if undefined_parameter_action is not None:
+            # We can just make use of the same-named mm keywords
+            unknown = undefined_parameter_action.name.lower()
+
+    return Schema(only=only,
+                  exclude=exclude,
+                  many=many,
+                  context=context,
+                  load_only=load_only,
+                  dump_only=dump_only,
+                  partial=partial,
+                  unknown=unknown)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="piate.api.response.MetadataEditTimestamp.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self, encode_json=False) ‑> Dict[str, Union[dict, list, str, int, float, bool, ForwardRef(None)]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self, encode_json=False) -&gt; Dict[str, Json]:
+    return _asdict(self, encode_json=encode_json)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataEditTimestamp.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self, *, skipkeys: bool = False, ensure_ascii: bool = True, check_circular: bool = True, allow_nan: bool = True, indent: Union[int, str, ForwardRef(None)] = None, separators: Tuple[str, str] = None, default: Callable = None, sort_keys: bool = False, **kw) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self,
+            *,
+            skipkeys: bool = False,
+            ensure_ascii: bool = True,
+            check_circular: bool = True,
+            allow_nan: bool = True,
+            indent: Optional[Union[int, str]] = None,
+            separators: Tuple[str, str] = None,
+            default: Callable = None,
+            sort_keys: bool = False,
+            **kw) -&gt; str:
+    return json.dumps(self.to_dict(encode_json=False),
+                      cls=_ExtendedEncoder,
+                      skipkeys=skipkeys,
+                      ensure_ascii=ensure_ascii,
+                      check_circular=check_circular,
+                      allow_nan=allow_nan,
+                      indent=indent,
+                      separators=separators,
+                      default=default,
+                      sort_keys=sort_keys,
+                      **kw)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="piate.api.response.MetadataProtection"><code class="flex name class">
+<span>class <span class="ident">MetadataProtection</span></span>
+<span>(</span><span>type: <a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a>, cascade: Optional[bool] = None, level: Optional[<a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a>] = None, strategy: Optional[<a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a>] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>MetadataProtection(type: piate.api.response.MetadataType, cascade: Optional[bool] = None, level: Optional[piate.api.response.MetadataType] = None, strategy: Optional[piate.api.response.MetadataType] = None)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class MetadataProtection:
+    type: MetadataType
+    cascade: Optional[bool] = field(default=None)
+    level: Optional[MetadataType] = field(default=None)
+    strategy: Optional[MetadataType] = field(default=None)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="piate.api.response.MetadataProtection.cascade"><code class="name">var <span class="ident">cascade</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataProtection.dataclass_json_config"><code class="name">var <span class="ident">dataclass_json_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataProtection.level"><code class="name">var <span class="ident">level</span> : Optional[<a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataProtection.strategy"><code class="name">var <span class="ident">strategy</span> : Optional[<a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataProtection.type"><code class="name">var <span class="ident">type</span> : <a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="piate.api.response.MetadataProtection.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>kvs: Union[dict, list, str, int, float, bool, ForwardRef(None)], *, infer_missing=False) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_dict(cls: Type[A],
+              kvs: Json,
+              *,
+              infer_missing=False) -&gt; A:
+    return _decode_dataclass(cls, kvs, infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataProtection.from_json"><code class="name flex">
+<span>def <span class="ident">from_json</span></span>(<span>s: Union[str, bytes, bytearray], *, parse_float=None, parse_int=None, parse_constant=None, infer_missing=False, **kw) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_json(cls: Type[A],
+              s: JsonData,
+              *,
+              parse_float=None,
+              parse_int=None,
+              parse_constant=None,
+              infer_missing=False,
+              **kw) -&gt; A:
+    kvs = json.loads(s,
+                     parse_float=parse_float,
+                     parse_int=parse_int,
+                     parse_constant=parse_constant,
+                     **kw)
+    return cls.from_dict(kvs, infer_missing=infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataProtection.schema"><code class="name flex">
+<span>def <span class="ident">schema</span></span>(<span>*, infer_missing: bool = False, only=None, exclude=(), many: bool = False, context=None, load_only=(), dump_only=(), partial: bool = False, unknown=None) ‑> dataclasses_json.mm.SchemaF[~A]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def schema(cls: Type[A],
+           *,
+           infer_missing: bool = False,
+           only=None,
+           exclude=(),
+           many: bool = False,
+           context=None,
+           load_only=(),
+           dump_only=(),
+           partial: bool = False,
+           unknown=None) -&gt; SchemaType:
+    Schema = build_schema(cls, DataClassJsonMixin, infer_missing, partial)
+
+    if unknown is None:
+        undefined_parameter_action = _undefined_parameter_action_safe(cls)
+        if undefined_parameter_action is not None:
+            # We can just make use of the same-named mm keywords
+            unknown = undefined_parameter_action.name.lower()
+
+    return Schema(only=only,
+                  exclude=exclude,
+                  many=many,
+                  context=context,
+                  load_only=load_only,
+                  dump_only=dump_only,
+                  partial=partial,
+                  unknown=unknown)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="piate.api.response.MetadataProtection.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self, encode_json=False) ‑> Dict[str, Union[dict, list, str, int, float, bool, ForwardRef(None)]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self, encode_json=False) -&gt; Dict[str, Json]:
+    return _asdict(self, encode_json=encode_json)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataProtection.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self, *, skipkeys: bool = False, ensure_ascii: bool = True, check_circular: bool = True, allow_nan: bool = True, indent: Union[int, str, ForwardRef(None)] = None, separators: Tuple[str, str] = None, default: Callable = None, sort_keys: bool = False, **kw) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self,
+            *,
+            skipkeys: bool = False,
+            ensure_ascii: bool = True,
+            check_circular: bool = True,
+            allow_nan: bool = True,
+            indent: Optional[Union[int, str]] = None,
+            separators: Tuple[str, str] = None,
+            default: Callable = None,
+            sort_keys: bool = False,
+            **kw) -&gt; str:
+    return json.dumps(self.to_dict(encode_json=False),
+                      cls=_ExtendedEncoder,
+                      skipkeys=skipkeys,
+                      ensure_ascii=ensure_ascii,
+                      check_circular=check_circular,
+                      allow_nan=allow_nan,
+                      indent=indent,
+                      separators=separators,
+                      default=default,
+                      sort_keys=sort_keys,
+                      **kw)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="piate.api.response.MetadataResource"><code class="flex name class">
+<span>class <span class="ident">MetadataResource</span></span>
+<span>(</span><span>href: str, method: str, accept_media_types: List[str], content_media_types: Optional[List[str]] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>MetadataResource(href: str, method: str, accept_media_types: List[str], content_media_types: Optional[List[str]] = None)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class MetadataResource:
+    href: str
+    method: str
+    accept_media_types: List[str]
+    content_media_types: Optional[List[str]] = field(default=None)
+
+    def get_acceptable_api_versions(self) -&gt; List[APIVersion]:
+        mimetypes = [APIVersion.from_mimetype(m) for m in self.accept_media_types]
+        fitlered_mimetypes = [m for m in mimetypes if m is not None]
+        fitlered_mimetypes.sort(reverse=True)
+        return fitlered_mimetypes</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="piate.api.response.MetadataResource.accept_media_types"><code class="name">var <span class="ident">accept_media_types</span> : List[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataResource.content_media_types"><code class="name">var <span class="ident">content_media_types</span> : Optional[List[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataResource.dataclass_json_config"><code class="name">var <span class="ident">dataclass_json_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataResource.href"><code class="name">var <span class="ident">href</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataResource.method"><code class="name">var <span class="ident">method</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="piate.api.response.MetadataResource.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>kvs: Union[dict, list, str, int, float, bool, ForwardRef(None)], *, infer_missing=False) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_dict(cls: Type[A],
+              kvs: Json,
+              *,
+              infer_missing=False) -&gt; A:
+    return _decode_dataclass(cls, kvs, infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataResource.from_json"><code class="name flex">
+<span>def <span class="ident">from_json</span></span>(<span>s: Union[str, bytes, bytearray], *, parse_float=None, parse_int=None, parse_constant=None, infer_missing=False, **kw) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_json(cls: Type[A],
+              s: JsonData,
+              *,
+              parse_float=None,
+              parse_int=None,
+              parse_constant=None,
+              infer_missing=False,
+              **kw) -&gt; A:
+    kvs = json.loads(s,
+                     parse_float=parse_float,
+                     parse_int=parse_int,
+                     parse_constant=parse_constant,
+                     **kw)
+    return cls.from_dict(kvs, infer_missing=infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataResource.schema"><code class="name flex">
+<span>def <span class="ident">schema</span></span>(<span>*, infer_missing: bool = False, only=None, exclude=(), many: bool = False, context=None, load_only=(), dump_only=(), partial: bool = False, unknown=None) ‑> dataclasses_json.mm.SchemaF[~A]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def schema(cls: Type[A],
+           *,
+           infer_missing: bool = False,
+           only=None,
+           exclude=(),
+           many: bool = False,
+           context=None,
+           load_only=(),
+           dump_only=(),
+           partial: bool = False,
+           unknown=None) -&gt; SchemaType:
+    Schema = build_schema(cls, DataClassJsonMixin, infer_missing, partial)
+
+    if unknown is None:
+        undefined_parameter_action = _undefined_parameter_action_safe(cls)
+        if undefined_parameter_action is not None:
+            # We can just make use of the same-named mm keywords
+            unknown = undefined_parameter_action.name.lower()
+
+    return Schema(only=only,
+                  exclude=exclude,
+                  many=many,
+                  context=context,
+                  load_only=load_only,
+                  dump_only=dump_only,
+                  partial=partial,
+                  unknown=unknown)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="piate.api.response.MetadataResource.get_acceptable_api_versions"><code class="name flex">
+<span>def <span class="ident">get_acceptable_api_versions</span></span>(<span>self) ‑> List[<a title="piate.api.version.APIVersion" href="version.html#piate.api.version.APIVersion">APIVersion</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_acceptable_api_versions(self) -&gt; List[APIVersion]:
+    mimetypes = [APIVersion.from_mimetype(m) for m in self.accept_media_types]
+    fitlered_mimetypes = [m for m in mimetypes if m is not None]
+    fitlered_mimetypes.sort(reverse=True)
+    return fitlered_mimetypes</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataResource.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self, encode_json=False) ‑> Dict[str, Union[dict, list, str, int, float, bool, ForwardRef(None)]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self, encode_json=False) -&gt; Dict[str, Json]:
+    return _asdict(self, encode_json=encode_json)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataResource.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self, *, skipkeys: bool = False, ensure_ascii: bool = True, check_circular: bool = True, allow_nan: bool = True, indent: Union[int, str, ForwardRef(None)] = None, separators: Tuple[str, str] = None, default: Callable = None, sort_keys: bool = False, **kw) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self,
+            *,
+            skipkeys: bool = False,
+            ensure_ascii: bool = True,
+            check_circular: bool = True,
+            allow_nan: bool = True,
+            indent: Optional[Union[int, str]] = None,
+            separators: Tuple[str, str] = None,
+            default: Callable = None,
+            sort_keys: bool = False,
+            **kw) -&gt; str:
+    return json.dumps(self.to_dict(encode_json=False),
+                      cls=_ExtendedEncoder,
+                      skipkeys=skipkeys,
+                      ensure_ascii=ensure_ascii,
+                      check_circular=check_circular,
+                      allow_nan=allow_nan,
+                      indent=indent,
+                      separators=separators,
+                      default=default,
+                      sort_keys=sort_keys,
+                      **kw)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="piate.api.response.MetadataType"><code class="flex name class">
+<span>class <span class="ident">MetadataType</span></span>
+<span>(</span><span>self: <a title="piate.api.response.MetadataResource" href="#piate.api.response.MetadataResource">MetadataResource</a>, code: Union[int, str], name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>MetadataType(self: piate.api.response.MetadataResource, code: Union[int, str], name: str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass_json(undefined=Undefined.RAISE)
+@dataclass
+class MetadataType:
+    self: MetadataResource
+    code: Union[int, str]
+    name: str</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="piate.api.response.MetadataType.code"><code class="name">var <span class="ident">code</span> : Union[int, str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataType.dataclass_json_config"><code class="name">var <span class="ident">dataclass_json_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataType.name"><code class="name">var <span class="ident">name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="piate.api.response.MetadataType.self"><code class="name">var <span class="ident">self</span> : <a title="piate.api.response.MetadataResource" href="#piate.api.response.MetadataResource">MetadataResource</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="piate.api.response.MetadataType.from_dict"><code class="name flex">
+<span>def <span class="ident">from_dict</span></span>(<span>kvs: Union[dict, list, str, int, float, bool, ForwardRef(None)], *, infer_missing=False) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_dict(cls: Type[A],
+              kvs: Json,
+              *,
+              infer_missing=False) -&gt; A:
+    return _decode_dataclass(cls, kvs, infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataType.from_json"><code class="name flex">
+<span>def <span class="ident">from_json</span></span>(<span>s: Union[str, bytes, bytearray], *, parse_float=None, parse_int=None, parse_constant=None, infer_missing=False, **kw) ‑> ~A</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_json(cls: Type[A],
+              s: JsonData,
+              *,
+              parse_float=None,
+              parse_int=None,
+              parse_constant=None,
+              infer_missing=False,
+              **kw) -&gt; A:
+    kvs = json.loads(s,
+                     parse_float=parse_float,
+                     parse_int=parse_int,
+                     parse_constant=parse_constant,
+                     **kw)
+    return cls.from_dict(kvs, infer_missing=infer_missing)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataType.schema"><code class="name flex">
+<span>def <span class="ident">schema</span></span>(<span>*, infer_missing: bool = False, only=None, exclude=(), many: bool = False, context=None, load_only=(), dump_only=(), partial: bool = False, unknown=None) ‑> dataclasses_json.mm.SchemaF[~A]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def schema(cls: Type[A],
+           *,
+           infer_missing: bool = False,
+           only=None,
+           exclude=(),
+           many: bool = False,
+           context=None,
+           load_only=(),
+           dump_only=(),
+           partial: bool = False,
+           unknown=None) -&gt; SchemaType:
+    Schema = build_schema(cls, DataClassJsonMixin, infer_missing, partial)
+
+    if unknown is None:
+        undefined_parameter_action = _undefined_parameter_action_safe(cls)
+        if undefined_parameter_action is not None:
+            # We can just make use of the same-named mm keywords
+            unknown = undefined_parameter_action.name.lower()
+
+    return Schema(only=only,
+                  exclude=exclude,
+                  many=many,
+                  context=context,
+                  load_only=load_only,
+                  dump_only=dump_only,
+                  partial=partial,
+                  unknown=unknown)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="piate.api.response.MetadataType.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self, encode_json=False) ‑> Dict[str, Union[dict, list, str, int, float, bool, ForwardRef(None)]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self, encode_json=False) -&gt; Dict[str, Json]:
+    return _asdict(self, encode_json=encode_json)</code></pre>
+</details>
+</dd>
+<dt id="piate.api.response.MetadataType.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self, *, skipkeys: bool = False, ensure_ascii: bool = True, check_circular: bool = True, allow_nan: bool = True, indent: Union[int, str, ForwardRef(None)] = None, separators: Tuple[str, str] = None, default: Callable = None, sort_keys: bool = False, **kw) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_json(self,
+            *,
+            skipkeys: bool = False,
+            ensure_ascii: bool = True,
+            check_circular: bool = True,
+            allow_nan: bool = True,
+            indent: Optional[Union[int, str]] = None,
+            separators: Tuple[str, str] = None,
+            default: Callable = None,
+            sort_keys: bool = False,
+            **kw) -&gt; str:
+    return json.dumps(self.to_dict(encode_json=False),
+                      cls=_ExtendedEncoder,
+                      skipkeys=skipkeys,
+                      ensure_ascii=ensure_ascii,
+                      check_circular=check_circular,
+                      allow_nan=allow_nan,
+                      indent=indent,
+                      separators=separators,
+                      default=default,
+                      sort_keys=sort_keys,
+                      **kw)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="piate.api" href="index.html">piate.api</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="piate.api.response.create_paged_response_class_generic" href="#piate.api.response.create_paged_response_class_generic">create_paged_response_class_generic</a></code></li>
+<li><code><a title="piate.api.response.create_paged_response_class_v2" href="#piate.api.response.create_paged_response_class_v2">create_paged_response_class_v2</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="piate.api.response.Link" href="#piate.api.response.Link">Link</a></code></h4>
+<ul class="">
+<li><code><a title="piate.api.response.Link.href" href="#piate.api.response.Link.href">href</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="piate.api.response.Meta" href="#piate.api.response.Meta">Meta</a></code></h4>
+<ul class="">
+<li><code><a title="piate.api.response.Meta.dataclass_json_config" href="#piate.api.response.Meta.dataclass_json_config">dataclass_json_config</a></code></li>
+<li><code><a title="piate.api.response.Meta.from_dict" href="#piate.api.response.Meta.from_dict">from_dict</a></code></li>
+<li><code><a title="piate.api.response.Meta.from_json" href="#piate.api.response.Meta.from_json">from_json</a></code></li>
+<li><code><a title="piate.api.response.Meta.href" href="#piate.api.response.Meta.href">href</a></code></li>
+<li><code><a title="piate.api.response.Meta.schema" href="#piate.api.response.Meta.schema">schema</a></code></li>
+<li><code><a title="piate.api.response.Meta.to_dict" href="#piate.api.response.Meta.to_dict">to_dict</a></code></li>
+<li><code><a title="piate.api.response.Meta.to_json" href="#piate.api.response.Meta.to_json">to_json</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="piate.api.response.Metadata" href="#piate.api.response.Metadata">Metadata</a></code></h4>
+<ul class="">
+<li><code><a title="piate.api.response.Metadata.confidentiality" href="#piate.api.response.Metadata.confidentiality">confidentiality</a></code></li>
+<li><code><a title="piate.api.response.Metadata.creation" href="#piate.api.response.Metadata.creation">creation</a></code></li>
+<li><code><a title="piate.api.response.Metadata.dataclass_json_config" href="#piate.api.response.Metadata.dataclass_json_config">dataclass_json_config</a></code></li>
+<li><code><a title="piate.api.response.Metadata.from_dict" href="#piate.api.response.Metadata.from_dict">from_dict</a></code></li>
+<li><code><a title="piate.api.response.Metadata.from_json" href="#piate.api.response.Metadata.from_json">from_json</a></code></li>
+<li><code><a title="piate.api.response.Metadata.modification" href="#piate.api.response.Metadata.modification">modification</a></code></li>
+<li><code><a title="piate.api.response.Metadata.protection" href="#piate.api.response.Metadata.protection">protection</a></code></li>
+<li><code><a title="piate.api.response.Metadata.schema" href="#piate.api.response.Metadata.schema">schema</a></code></li>
+<li><code><a title="piate.api.response.Metadata.to_dict" href="#piate.api.response.Metadata.to_dict">to_dict</a></code></li>
+<li><code><a title="piate.api.response.Metadata.to_json" href="#piate.api.response.Metadata.to_json">to_json</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="piate.api.response.MetadataEditTimestamp" href="#piate.api.response.MetadataEditTimestamp">MetadataEditTimestamp</a></code></h4>
+<ul class="">
+<li><code><a title="piate.api.response.MetadataEditTimestamp.dataclass_json_config" href="#piate.api.response.MetadataEditTimestamp.dataclass_json_config">dataclass_json_config</a></code></li>
+<li><code><a title="piate.api.response.MetadataEditTimestamp.division" href="#piate.api.response.MetadataEditTimestamp.division">division</a></code></li>
+<li><code><a title="piate.api.response.MetadataEditTimestamp.from_dict" href="#piate.api.response.MetadataEditTimestamp.from_dict">from_dict</a></code></li>
+<li><code><a title="piate.api.response.MetadataEditTimestamp.from_json" href="#piate.api.response.MetadataEditTimestamp.from_json">from_json</a></code></li>
+<li><code><a title="piate.api.response.MetadataEditTimestamp.institution" href="#piate.api.response.MetadataEditTimestamp.institution">institution</a></code></li>
+<li><code><a title="piate.api.response.MetadataEditTimestamp.schema" href="#piate.api.response.MetadataEditTimestamp.schema">schema</a></code></li>
+<li><code><a title="piate.api.response.MetadataEditTimestamp.timestamp" href="#piate.api.response.MetadataEditTimestamp.timestamp">timestamp</a></code></li>
+<li><code><a title="piate.api.response.MetadataEditTimestamp.to_dict" href="#piate.api.response.MetadataEditTimestamp.to_dict">to_dict</a></code></li>
+<li><code><a title="piate.api.response.MetadataEditTimestamp.to_json" href="#piate.api.response.MetadataEditTimestamp.to_json">to_json</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="piate.api.response.MetadataProtection" href="#piate.api.response.MetadataProtection">MetadataProtection</a></code></h4>
+<ul class="">
+<li><code><a title="piate.api.response.MetadataProtection.cascade" href="#piate.api.response.MetadataProtection.cascade">cascade</a></code></li>
+<li><code><a title="piate.api.response.MetadataProtection.dataclass_json_config" href="#piate.api.response.MetadataProtection.dataclass_json_config">dataclass_json_config</a></code></li>
+<li><code><a title="piate.api.response.MetadataProtection.from_dict" href="#piate.api.response.MetadataProtection.from_dict">from_dict</a></code></li>
+<li><code><a title="piate.api.response.MetadataProtection.from_json" href="#piate.api.response.MetadataProtection.from_json">from_json</a></code></li>
+<li><code><a title="piate.api.response.MetadataProtection.level" href="#piate.api.response.MetadataProtection.level">level</a></code></li>
+<li><code><a title="piate.api.response.MetadataProtection.schema" href="#piate.api.response.MetadataProtection.schema">schema</a></code></li>
+<li><code><a title="piate.api.response.MetadataProtection.strategy" href="#piate.api.response.MetadataProtection.strategy">strategy</a></code></li>
+<li><code><a title="piate.api.response.MetadataProtection.to_dict" href="#piate.api.response.MetadataProtection.to_dict">to_dict</a></code></li>
+<li><code><a title="piate.api.response.MetadataProtection.to_json" href="#piate.api.response.MetadataProtection.to_json">to_json</a></code></li>
+<li><code><a title="piate.api.response.MetadataProtection.type" href="#piate.api.response.MetadataProtection.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="piate.api.response.MetadataResource" href="#piate.api.response.MetadataResource">MetadataResource</a></code></h4>
+<ul class="">
+<li><code><a title="piate.api.response.MetadataResource.accept_media_types" href="#piate.api.response.MetadataResource.accept_media_types">accept_media_types</a></code></li>
+<li><code><a title="piate.api.response.MetadataResource.content_media_types" href="#piate.api.response.MetadataResource.content_media_types">content_media_types</a></code></li>
+<li><code><a title="piate.api.response.MetadataResource.dataclass_json_config" href="#piate.api.response.MetadataResource.dataclass_json_config">dataclass_json_config</a></code></li>
+<li><code><a title="piate.api.response.MetadataResource.from_dict" href="#piate.api.response.MetadataResource.from_dict">from_dict</a></code></li>
+<li><code><a title="piate.api.response.MetadataResource.from_json" href="#piate.api.response.MetadataResource.from_json">from_json</a></code></li>
+<li><code><a title="piate.api.response.MetadataResource.get_acceptable_api_versions" href="#piate.api.response.MetadataResource.get_acceptable_api_versions">get_acceptable_api_versions</a></code></li>
+<li><code><a title="piate.api.response.MetadataResource.href" href="#piate.api.response.MetadataResource.href">href</a></code></li>
+<li><code><a title="piate.api.response.MetadataResource.method" href="#piate.api.response.MetadataResource.method">method</a></code></li>
+<li><code><a title="piate.api.response.MetadataResource.schema" href="#piate.api.response.MetadataResource.schema">schema</a></code></li>
+<li><code><a title="piate.api.response.MetadataResource.to_dict" href="#piate.api.response.MetadataResource.to_dict">to_dict</a></code></li>
+<li><code><a title="piate.api.response.MetadataResource.to_json" href="#piate.api.response.MetadataResource.to_json">to_json</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="piate.api.response.MetadataType" href="#piate.api.response.MetadataType">MetadataType</a></code></h4>
+<ul class="">
+<li><code><a title="piate.api.response.MetadataType.code" href="#piate.api.response.MetadataType.code">code</a></code></li>
+<li><code><a title="piate.api.response.MetadataType.dataclass_json_config" href="#piate.api.response.MetadataType.dataclass_json_config">dataclass_json_config</a></code></li>
+<li><code><a title="piate.api.response.MetadataType.from_dict" href="#piate.api.response.MetadataType.from_dict">from_dict</a></code></li>
+<li><code><a title="piate.api.response.MetadataType.from_json" href="#piate.api.response.MetadataType.from_json">from_json</a></code></li>
+<li><code><a title="piate.api.response.MetadataType.name" href="#piate.api.response.MetadataType.name">name</a></code></li>
+<li><code><a title="piate.api.response.MetadataType.schema" href="#piate.api.response.MetadataType.schema">schema</a></code></li>
+<li><code><a title="piate.api.response.MetadataType.self" href="#piate.api.response.MetadataType.self">self</a></code></li>
+<li><code><a title="piate.api.response.MetadataType.to_dict" href="#piate.api.response.MetadataType.to_dict">to_dict</a></code></li>
+<li><code><a title="piate.api.response.MetadataType.to_json" href="#piate.api.response.MetadataType.to_json">to_json</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
