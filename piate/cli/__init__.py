@@ -51,14 +51,31 @@ def inventories():
 
 
 @inventories.command("list-languages")
-def inventories_languages():
-    piate.client()
-    raise NotImplementedError()
+@click.option(
+    "--translation-language", "-L", metavar="TRANSLATION_LANGUAGE", required=False
+)
+@click.pass_obj
+def inventories_languages(obj: ContextObj, translation_language: str):
+    kwargs = {}
+    if translation_language is not None:
+        kwargs["translation_language"] = translation_language
+    pages_response_iterator(
+        obj.client.inventories.pages_languages(**kwargs), obj.format
+    )
 
 
 @inventories.command("list-query-operators")
-def inventories_query_operators():
-    raise NotImplementedError()
+@click.option(
+    "--translation-language", "-L", metavar="TRANSLATION_LANGUAGE", required=False
+)
+@click.pass_obj
+def inventories_query_operators(obj: ContextObj, translation_language: str):
+    kwargs = {}
+    if translation_language is not None:
+        kwargs["translation_language"] = translation_language
+    pages_response_iterator(
+        obj.client.inventories.pages_query_operators(**kwargs), obj.format
+    )
 
 
 @inventories.command("list-term-types")
@@ -92,10 +109,20 @@ def domains(obj: ContextObj):
     page_response(obj.client.domains.list(), obj.format)
 
 
+"""
+Collections
+"""
+
+
 @run.command("list-collections")
 @click.pass_obj
 def collections(obj: ContextObj):
     pages_response_iterator(obj.client.collections.pages(), obj.format)
+
+
+"""
+Institutions
+"""
 
 
 @run.command("list-institutions")

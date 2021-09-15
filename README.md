@@ -15,3 +15,12 @@ Currently working commands:
  - `iate list-collections`
  - `iate list-domains`
  - `iate list-institutions`
+
+### Filtering
+
+It's suggested to use the  [`jq`](https://stedolan.github.io/jq/) to filter the responses on the command line.
+
+For example, only select official languages:
+```shell
+iate inventories list-languages | jq '[.[] | select(.is_official == true)] | length'
+```
