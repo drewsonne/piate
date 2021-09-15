@@ -28,7 +28,7 @@ The entrypoint into the library, allowing the provision of authentication.
 # Example with username and password
 import piate
 
-iate = piate.client(username="myusername", api_key="...")
+iate_client = piate.client(username="myusername", api_key="...")
 ```
 
 ```python
@@ -37,7 +37,7 @@ import piate
 from piate.api.session import Session
 from piate.api.credentials import Credentials
 
-iate = piate.client(
+iate_client = piate.client(
     session=Session(
         credentials=Credentials(
             username="myusername", 
@@ -48,7 +48,7 @@ iate = piate.client(
 ```
 
 
-## <a name="collection">Collections</a>
+## <a name="collection"></a>Collections
 
 A resource representing collections
 
