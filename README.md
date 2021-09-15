@@ -15,6 +15,12 @@ Currently working commands:
  - `iate list-collections`
  - `iate list-domains`
  - `iate list-institutions`
+ - `iate inventories list-languages`
+ - `iate inventories list-primarities`
+ - `iate inventories list-query-operators`
+ - `iate inventories list-reliabilities`
+ - `iate inventories list-searchable-fields`
+ - `iate inventories list-term-types`
 
 ### Filtering
 

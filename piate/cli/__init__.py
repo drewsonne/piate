@@ -79,23 +79,59 @@ def inventories_query_operators(obj: ContextObj, translation_language: str):
 
 
 @inventories.command("list-term-types")
-def inventories_term_types():
-    raise NotImplementedError()
+@click.option(
+    "--translation-language", "-L", metavar="TRANSLATION_LANGUAGE", required=False
+)
+@click.pass_obj
+def inventories_term_types(obj: ContextObj, translation_language: str):
+    kwargs = {}
+    if translation_language is not None:
+        kwargs["translation_language"] = translation_language
+    pages_response_iterator(
+        obj.client.inventories.pages_term_types(**kwargs), obj.format
+    )
 
 
 @inventories.command("list-searchable-fields")
-def inventories_searchable_fields():
-    raise NotImplementedError()
+@click.option(
+    "--translation-language", "-L", metavar="TRANSLATION_LANGUAGE", required=False
+)
+@click.pass_obj
+def inventories_searchable_fields(obj: ContextObj, translation_language: str):
+    kwargs = {}
+    if translation_language is not None:
+        kwargs["translation_language"] = translation_language
+    pages_response_iterator(
+        obj.client.inventories.pages_searchable_fields(**kwargs), obj.format
+    )
 
 
 @inventories.command("list-primarities")
-def inventories_primarities():
-    raise NotImplementedError()
+@click.option(
+    "--translation-language", "-L", metavar="TRANSLATION_LANGUAGE", required=False
+)
+@click.pass_obj
+def inventories_primarities(obj: ContextObj, translation_language: str):
+    kwargs = {}
+    if translation_language is not None:
+        kwargs["translation_language"] = translation_language
+    pages_response_iterator(
+        obj.client.inventories.pages_primarities(**kwargs), obj.format
+    )
 
 
 @inventories.command("list-reliabilities")
-def inventories_reliabilities():
-    raise NotImplementedError()
+@click.option(
+    "--translation-language", "-L", metavar="TRANSLATION_LANGUAGE", required=False
+)
+@click.pass_obj
+def inventories_reliabilities(obj: ContextObj, translation_language: str):
+    kwargs = {}
+    if translation_language is not None:
+        kwargs["translation_language"] = translation_language
+    pages_response_iterator(
+        obj.client.inventories.pages_reliabilities(**kwargs), obj.format
+    )
 
 
 """"
