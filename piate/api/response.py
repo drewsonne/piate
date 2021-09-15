@@ -55,11 +55,11 @@ def create_paged_response_class_generic(item_type):
     class PagedResponse:
         items: List[item_type]
 
-        offset: int
-        limit: int
-        size: int
-
         meta: Meta
+
+        offset: Optional[int] = field(default=None)
+        limit: Optional[int] = field(default=None)
+        size: Optional[int] = field(default=None)
 
         next: Optional[Meta] = field(default=None)
 
