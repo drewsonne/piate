@@ -39,6 +39,7 @@ jobs:
           user: __token__
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
+          verbose: true
   publish-to-prod:
     name: Publish Python 🐍 distributions 📦 to PyPI
     runs-on: ubuntu-18.04
@@ -51,3 +52,4 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
+          verbose: true
