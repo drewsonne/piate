@@ -29,6 +29,8 @@ iate inventories list-languages | jq '[.[] | select(.is_official == true)] | len
 
 # <a name="api"></a>Library
 
+For further details see the official [IATE API documentation](https://documenter.getpostman.com/view/4028985/RztoMTwn).
+
  - [client()](#client)
    - [collections](#collections)
      - [pages()](#collection-pages)
@@ -43,6 +45,7 @@ iate inventories list-languages | jq '[.[] | select(.is_official == true)] | len
      - [pages_searchable_fields()](#inventories-pages_searchable_fields)
      - [pages_primarities()](#inventories-pages_primarities)
      - [pages_reliabilities()](#inventories-pages_reliabilities)
+   - [entries](#entries)
 
 ## <a name="client">client(**kwargs)</a>
 
@@ -156,7 +159,7 @@ for domain in domains.list():
     print(domain.name)
 ```
 
-## <a name=""></a>Inventories
+## <a name="inventories"></a>Inventories
 
 A resoure representing inventories
 
@@ -270,3 +273,28 @@ for page in inventories.pages_reliabilities(translation_language="en"):
     for reliabilities in page.items:
         print(reliabilities.name)
 ```
+
+## <a name="entries"></a>Entries
+
+A resoure representing vocabulary entries
+
+```python
+import piate
+
+entries = piate.client(...).entries
+```
+
+These are the available methods:
+
+ - [_`pages_search()`_](#inventories-search)
+
+### <a name="inventories-pages_search">**pages_search(\*\*kwargs)**</a>
+
+Iterate through pages of vocabulary entries
+
+#### Parameters
+
+ - **fields_set_name** _(string)_ -- Defines the set of fields which will be returned. 
+   Currently only accepted values are `minimal` and `full`.
+ - **query** _(string)_ -- The query to execute to search
+ - **source** _(string)_ -- The source language of the terminology data.
