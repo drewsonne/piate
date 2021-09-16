@@ -13,17 +13,10 @@ pip install piate
 
 # <a name="cli-tool"></a>CLI tool
 
-Currently working commands:
+```shell
+$ iate --help
+```
 
- - `iate list-collections`
- - `iate list-domains`
- - `iate list-institutions`
- - `iate inventories list-languages`
- - `iate inventories list-primarities`
- - `iate inventories list-query-operators`
- - `iate inventories list-reliabilities`
- - `iate inventories list-searchable-fields`
- - `iate inventories list-term-types`
 
 ## Filtering
 
