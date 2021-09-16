@@ -46,6 +46,7 @@ For further details see the official [IATE API documentation](https://documenter
      - [pages_primarities()](#inventories-pages_primarities)
      - [pages_reliabilities()](#inventories-pages_reliabilities)
    - [entries](#entries)
+     - [pages_search()](#entries-search)
 
 ## <a name="client">client(**kwargs)</a>
 
@@ -286,9 +287,11 @@ entries = piate.client(...).entries
 
 These are the available methods:
 
- - [_`pages_search()`_](#inventories-search)
+ - [_`pages_search()`_](#entries-search)
 
-### <a name="inventories-pages_search">**pages_search(\*\*kwargs)**</a>
+### <a name="entries-pages_search">**pages_search(\*\*kwargs)**</a>
+
+__NOTE: Not yet mplemented__
 
 Iterate through pages of vocabulary entries
 
