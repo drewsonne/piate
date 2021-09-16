@@ -19,6 +19,6 @@ setup(
     description="Python Library to interact with the IATE database",
     long_description=README,
     long_description_content_type="text/markdown",
-    install_requires=["requests", "dataclasses-json", "click"],
+    install_requires=["requests", "dataclasses-json", "cloup"],
     entry_points={"console_scripts": ["iate=piate.cli:run"]},
 )
