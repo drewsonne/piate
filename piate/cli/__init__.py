@@ -46,22 +46,22 @@ def inventories():
     ...
 
 
-generate_inventory_get_command(inventories, "language")
+generate_inventory_get_command(inventories, "language", has_official=True)
 generate_inventory_list_command(inventories, "languages")
 
-generate_inventory_get_command(inventories, "primarity", has_official=False)
+generate_inventory_get_command(inventories, "primarity")
 generate_inventory_list_command(inventories, "primarities")
 
-generate_inventory_get_command(inventories, "query-operator", has_official=False)
+generate_inventory_get_command(inventories, "query-operator")
 generate_inventory_list_command(inventories, "query-operators")
 
-generate_inventory_get_command(inventories, "reliability", has_official=False)
+generate_inventory_get_command(inventories, "reliability")
 generate_inventory_list_command(inventories, "reliabilities")
 
-generate_inventory_get_command(inventories, "searchable-field", has_official=False)
+generate_inventory_get_command(inventories, "searchable-field")
 generate_inventory_list_command(inventories, "searchable-fields")
 
-generate_inventory_get_command(inventories, "term-type", has_official=False)
+generate_inventory_get_command(inventories, "term-type")
 generate_inventory_list_command(inventories, "term-types")
 
 

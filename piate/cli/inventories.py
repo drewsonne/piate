@@ -9,7 +9,7 @@ from piate.cli.render import page_response, pages_response_iterator
 
 
 def generate_inventory_get_command(
-    inventories: click.Group, entity: str, has_official: Optional[bool] = True
+    inventories: click.Group, entity: str, has_official: Optional[bool] = False
 ):
     """
     Generate a CLI command for retrieving a list of entities from inventory
