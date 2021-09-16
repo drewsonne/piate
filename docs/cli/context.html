@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>piate.cli API documentation</title>
+<title>piate.cli.context API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,163 +19,62 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>piate.cli</code></h1>
+<h1 class="title">Module <code>piate.cli.context</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import cloup
+<pre><code class="python">from dataclasses import dataclass
 
 from piate.api.client import Client
-from piate.api.credentials import Credentials
-from piate.api.session import Session
-from piate.cli.context import ContextObj
 from piate.cli.format import Format
-from piate.cli.inventories import (
-    generate_inventory_get_command,
-    generate_inventory_list_command,
-)
-from piate.cli.render import pages_response_iterator, page_response
 
 
-@cloup.group()
-@cloup.option(
-    &#34;--username&#34;,
-    &#34;-U&#34;,
-    metavar=&#34;USERNAME&#34;,
-    help=&#34;Username to request against the API&#34;,
-    required=False,
-)
-@cloup.option(
-    &#34;--api-key&#34;,
-    &#34;-K&#34;,
-    metavar=&#34;API_KEY&#34;,
-    help=&#34;API Key to use to request against the API&#34;,
-    required=False,
-)
-@cloup.option(&#34;--format&#34;, default=&#34;json&#34;, type=cloup.Choice([&#34;json&#34;, &#34;json-lines&#34;]))
-@cloup.pass_context
-def run(ctx: cloup.Context, username: str, api_key: str, format: str):
-    ctx.obj = ContextObj(
-        client=Client(Session(Credentials(username=username, api_key=api_key))),
-        format=Format(format),
-    )
-
-
-&#34;&#34;&#34;
-Inventories
-&#34;&#34;&#34;
-
-
-@run.group()
-def inventories():
-    ...
-
-
-generate_inventory_get_command(inventories, &#34;language&#34;)
-generate_inventory_list_command(inventories, &#34;languages&#34;)
-
-generate_inventory_get_command(inventories, &#34;primarity&#34;, has_official=False)
-generate_inventory_list_command(inventories, &#34;primarities&#34;)
-
-generate_inventory_get_command(inventories, &#34;query-operator&#34;, has_official=False)
-generate_inventory_list_command(inventories, &#34;query-operators&#34;)
-
-generate_inventory_get_command(inventories, &#34;reliability&#34;, has_official=False)
-generate_inventory_list_command(inventories, &#34;reliabilities&#34;)
-
-generate_inventory_get_command(inventories, &#34;searchable-field&#34;, has_official=False)
-generate_inventory_list_command(inventories, &#34;searchable-fields&#34;)
-
-generate_inventory_get_command(inventories, &#34;term-type&#34;, has_official=False)
-generate_inventory_list_command(inventories, &#34;term-types&#34;)
-
-
-&#34;&#34;&#34;&#34;
-Domains
-&#34;&#34;&#34;
-
-
-@run.command(&#34;list-domains&#34;)
-@cloup.pass_obj
-def domains(obj: ContextObj):
-    page_response(obj.client.domains.list(), obj.format)
-
-
-&#34;&#34;&#34;
-Collections
-&#34;&#34;&#34;
-
-
-@run.command(&#34;list-collections&#34;)
-@cloup.pass_obj
-def collections(obj: ContextObj):
-    pages_response_iterator(obj.client.collections.pages(), obj.format)
-
-
-&#34;&#34;&#34;
-Institutions
-&#34;&#34;&#34;
-
-
-@run.command(&#34;list-institutions&#34;)
-@cloup.pass_obj
-def institutions(obj: ContextObj):
-    pages_response_iterator(obj.client.institutions.pages(), obj.format)
-
-
-&#34;&#34;&#34;
-Entries
-&#34;&#34;&#34;
-
-
-@run.group(&#34;entries&#34;)
-def entries():
-    ...
-
-
-@entries.command(&#34;search-entries&#34;)
-def entries_search():
-    raise NotImplementedError()
-
-
-@entries.command(&#34;multi-search-entries&#34;)
-def entries_multi_search():
-    raise NotImplementedError()
-
-
-if __name__ == &#34;__main__&#34;:
-    run()</code></pre>
+@dataclass
+class ContextObj:
+    client: Client
+    format: Format</code></pre>
 </details>
 </section>
 <section>
-<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt><code class="name"><a title="piate.cli.context" href="context.html">piate.cli.context</a></code></dt>
+<dt id="piate.cli.context.ContextObj"><code class="flex name class">
+<span>class <span class="ident">ContextObj</span></span>
+<span>(</span><span>client: <a title="piate.api.client.Client" href="../api/client.html#piate.api.client.Client">Client</a>, format: <a title="piate.cli.format.Format" href="format.html#piate.cli.format.Format">Format</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>ContextObj(client: piate.api.client.Client, format: piate.cli.format.Format)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class ContextObj:
+    client: Client
+    format: Format</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="piate.cli.context.ContextObj.client"><code class="name">var <span class="ident">client</span> : <a title="piate.api.client.Client" href="../api/client.html#piate.api.client.Client">Client</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="piate.cli.format" href="format.html">piate.cli.format</a></code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt><code class="name"><a title="piate.cli.inventories" href="inventories.html">piate.cli.inventories</a></code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt><code class="name"><a title="piate.cli.render" href="render.html">piate.cli.render</a></code></dt>
+<dt id="piate.cli.context.ContextObj.format"><code class="name">var <span class="ident">format</span> : <a title="piate.cli.format.Format" href="format.html#piate.cli.format.Format">Format</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
-</section>
-<section>
-</section>
-<section>
-</section>
-<section>
+</dd>
+</dl>
 </section>
 </article>
 <nav id="sidebar">
@@ -186,15 +85,18 @@ if __name__ == &#34;__main__&#34;:
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="piate" href="../index.html">piate</a></code></li>
+<li><code><a title="piate.cli" href="index.html">piate.cli</a></code></li>
 </ul>
 </li>
-<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
-<li><code><a title="piate.cli.context" href="context.html">piate.cli.context</a></code></li>
-<li><code><a title="piate.cli.format" href="format.html">piate.cli.format</a></code></li>
-<li><code><a title="piate.cli.inventories" href="inventories.html">piate.cli.inventories</a></code></li>
-<li><code><a title="piate.cli.render" href="render.html">piate.cli.render</a></code></li>
+<li>
+<h4><code><a title="piate.cli.context.ContextObj" href="#piate.cli.context.ContextObj">ContextObj</a></code></h4>
+<ul class="">
+<li><code><a title="piate.cli.context.ContextObj.client" href="#piate.cli.context.ContextObj.client">client</a></code></li>
+<li><code><a title="piate.cli.context.ContextObj.format" href="#piate.cli.context.ContextObj.format">format</a></code></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
