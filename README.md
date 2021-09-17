@@ -20,11 +20,11 @@ $ iate --help
 
 ## Filtering
 
-It's suggested to use the  [`jq`](https://stedolan.github.io/jq/) to filter the responses on the command line.
+It's suggested to use a json filtering library such as  [`jq`](https://stedolan.github.io/jq/) to filter the responses on the command line.
 
 For example, only select official languages:
 ```shell
-iate inventories list-languages | jq '[.[] | select(.is_official == true)] | length'
+iate inventories list-languages | jq '[.[] | select(.is_official == true)]'
 ```
 
 # <a name="api"></a>Library
