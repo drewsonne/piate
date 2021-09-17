@@ -1,6 +1,6 @@
 # piate
 
-A python library and cli tool to interact with the [IATE (**I**nter**a**ctive **T**erminology for **E**urope)](https://iate.europa.eu/home) database. 
+Piate (pronounced pi-ay-tee-ee) is a python library and cli tool to interact with the [IATE (**I**nter**a**ctive **T**erminology for **E**urope)](https://iate.europa.eu/home) database. 
 
  - [CLI tool](#cli-tool)
  - [Library](#api)
