@@ -5,7 +5,7 @@ from piate.api.credentials import Credentials
 from piate.api.session import Session
 from piate.cli.context import ContextObj
 from piate.cli.format import Format
-from piate.cli.inventories import (
+from piate.cli.resources.inventories import (
     generate_inventory_get_command,
     generate_inventory_list_command,
 )
@@ -64,7 +64,6 @@ generate_inventory_list_command(inventories, "searchable-fields")
 generate_inventory_get_command(inventories, "term-type")
 generate_inventory_list_command(inventories, "term-types")
 
-
 """"
 Domains
 """
@@ -108,8 +107,97 @@ def entries():
     ...
 
 
-@entries.command("search-entries")
-def entries_search():
+@entries.command(
+    "search-entries",
+    epilog="""
+\b
+See https://documenter.getpostman.com/view/4028985/RztoMTwn#72dd2d11-d83c-4cbd-b5d9-2d9ee97cf379
+for more details regarding the search options.""",
+)
+@cloup.option(
+    "--query",
+    "-q",
+    metavar="QUERY",
+    help="The string to parse/analyse/search",
+    required=False,
+)
+@cloup.option(
+    "--source",
+    "-s",
+    metavar="SOURCE",
+    help=" The source language of the terminology data",
+)
+@cloup.option(
+    "--target",
+    "-t",
+    metavar="TARGET",
+    help="The target languages of the terminology data",
+    multiple=True,
+)
+@cloup.option(
+    "--search-in-fields",
+    "-sF",
+    metavar="FIELDS",
+    help="The fields in which the search will be performed",
+    multiple=True,
+)
+@cloup.option(
+    "--search-in-term-types",
+    "-sT",
+    metavar="TERM_TYPE",
+    type=int,
+    help="The term-entry codes in which the search will be performed",
+    multiple=True,
+)
+@cloup.option(
+    "--query-operator",
+    "-Q",
+    type=int,
+    metavar="OPERATOR_CODE",
+    help="The operator code of the query",
+    required=False,
+)
+@cloup.option(
+    "--domain-cascade/--no-domain-cascade",
+    "-c",
+    help="To apply or not the domain cascading while filtering by domains",
+    required=False,
+)
+@cloup.option("--filter", "-F", help="Provide a filter")
+@cloup.pass_obj
+def entries_search(
+    obj: ContextObj, query: str, source: str, targets: str, search_in_fields
+):
+    """
+    Search the IATE database for entries
+
+    \033[1mFilters\033[0m
+
+    \b
+    When using the \033[3m--filter\033[0m option, the arguments are parsed based on the structure:
+    \b
+        Name=\033[3m<name>\033[0m:Values=\033[3m<value_list>\033[0m[;Name=\033[3m<name>\033[0m:Values=\033[3m<value_list>\033[0m]
+
+    Multiple filter statements can be concatenated with a ';'.
+
+    \b
+    \033[3m<name>\033[0m
+    Which type of filter this entry will target.
+    Currently supports:
+      - domains
+      - entry_collection
+      - entry_institution_owner
+      - entry_primarity
+      - source_term_reliability
+      - target_term_reliability
+
+    \b
+    \033[3m<value_list>\033[0m
+    Comma separated list of codes.
+    Example: 5,2,4 is an array of values [5, 2, 4].
+
+
+    """
     raise NotImplementedError()
 
 
