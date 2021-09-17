@@ -46,7 +46,7 @@ For further details see the official [IATE API documentation](https://documenter
      - [pages_primarities()](#inventories-pages_primarities)
      - [pages_reliabilities()](#inventories-pages_reliabilities)
    - [entries](#entries)
-     - [pages_search()](#entries-search) ___NOT YET IMPLEMENTED___
+     - [pages_search()](#entries-search) ___NOT IMPLEMENTED___
 
 ## <a name="client">client(**kwargs)</a>
 
