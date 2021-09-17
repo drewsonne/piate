@@ -37,7 +37,7 @@ from piate.cli.render import page_response, pages_response_iterator
 
 
 def generate_inventory_get_command(
-    inventories: click.Group, entity: str, has_official: Optional[bool] = True
+    inventories: click.Group, entity: str, has_official: Optional[bool] = False
 ):
     &#34;&#34;&#34;
     Generate a CLI command for retrieving a list of entities from inventory
@@ -107,7 +107,7 @@ def generate_inventory_list_command(inventories: click.Group, entities: str):
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="piate.cli.inventories.generate_inventory_get_command"><code class="name flex">
-<span>def <span class="ident">generate_inventory_get_command</span></span>(<span>inventories: click.core.Group, entity: str, has_official: Optional[bool] = True)</span>
+<span>def <span class="ident">generate_inventory_get_command</span></span>(<span>inventories: click.core.Group, entity: str, has_official: Optional[bool] = False)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Generate a CLI command for retrieving a list of entities from inventory</p></div>
@@ -116,7 +116,7 @@ def generate_inventory_list_command(inventories: click.Group, entities: str):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def generate_inventory_get_command(
-    inventories: click.Group, entity: str, has_official: Optional[bool] = True
+    inventories: click.Group, entity: str, has_official: Optional[bool] = False
 ):
     &#34;&#34;&#34;
     Generate a CLI command for retrieving a list of entities from inventory

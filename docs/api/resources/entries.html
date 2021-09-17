@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>piate.api.client API documentation</title>
+<title>piate.api.resources.entries API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,38 +19,18 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>piate.api.client</code></h1>
+<h1 class="title">Module <code>piate.api.resources.entries</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from dataclasses import dataclass
-
-from piate.api.resources.collections import Collections
-from piate.api.resources.domains import Domains
-from piate.api.resources.entries import Entries
-from piate.api.resources.institutions import Institutions
-from piate.api.resources.inventories import Inventories
-from piate.api.session import Session
+<pre><code class="python">from piate.api.resources import BaseResource
 
 
-@dataclass(init=False)
-class Client:
-    inventories: Inventories
-    collections: Collections
-    institutions: Institutions
-
-    def __init__(self, session: Session):
-        self._session = session
-
-        self.inventories = Inventories(self._session)
-        self.collections = Collections(self._session)
-        self.domains = Domains(self._session)
-        self.institutions = Institutions(self._session)
-
-        self.entries = Entries(self._session)</code></pre>
+class Entries(BaseResource):
+    ...</code></pre>
 </details>
 </section>
 <section>
@@ -62,43 +42,26 @@ class Client:
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="piate.api.client.Client"><code class="flex name class">
-<span>class <span class="ident">Client</span></span>
-<span>(</span><span>session: <a title="piate.api.session.Session" href="session.html#piate.api.session.Session">Session</a>)</span>
+<dt id="piate.api.resources.entries.Entries"><code class="flex name class">
+<span>class <span class="ident">Entries</span></span>
+<span>(</span><span>session: <a title="piate.api.session.Session" href="../session.html#piate.api.session.Session">Session</a>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Client(session: piate.api.session.Session)</p></div>
+<div class="desc"></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">@dataclass(init=False)
-class Client:
-    inventories: Inventories
-    collections: Collections
-    institutions: Institutions
-
-    def __init__(self, session: Session):
-        self._session = session
-
-        self.inventories = Inventories(self._session)
-        self.collections = Collections(self._session)
-        self.domains = Domains(self._session)
-        self.institutions = Institutions(self._session)
-
-        self.entries = Entries(self._session)</code></pre>
+<pre><code class="python">class Entries(BaseResource):
+    ...</code></pre>
 </details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="piate.api.resources.BaseResource" href="index.html#piate.api.resources.BaseResource">BaseResource</a></li>
+</ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="piate.api.client.Client.collections"><code class="name">var <span class="ident">collections</span> : <a title="piate.api.resources.collections.Collections" href="resources/collections.html#piate.api.resources.collections.Collections">Collections</a></code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="piate.api.client.Client.institutions"><code class="name">var <span class="ident">institutions</span> : <a title="piate.api.resources.institutions.Institutions" href="resources/institutions.html#piate.api.resources.institutions.Institutions">Institutions</a></code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt id="piate.api.client.Client.inventories"><code class="name">var <span class="ident">inventories</span> : <a title="piate.api.resources.inventories.Inventories" href="resources/inventories.html#piate.api.resources.inventories.Inventories">Inventories</a></code></dt>
+<dt id="piate.api.resources.entries.Entries.session"><code class="name">var <span class="ident">session</span> : <a title="piate.api.session.Session" href="../session.html#piate.api.session.Session">Session</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -115,17 +78,15 @@ class Client:
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="piate.api" href="index.html">piate.api</a></code></li>
+<li><code><a title="piate.api.resources" href="index.html">piate.api.resources</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="piate.api.client.Client" href="#piate.api.client.Client">Client</a></code></h4>
+<h4><code><a title="piate.api.resources.entries.Entries" href="#piate.api.resources.entries.Entries">Entries</a></code></h4>
 <ul class="">
-<li><code><a title="piate.api.client.Client.collections" href="#piate.api.client.Client.collections">collections</a></code></li>
-<li><code><a title="piate.api.client.Client.institutions" href="#piate.api.client.Client.institutions">institutions</a></code></li>
-<li><code><a title="piate.api.client.Client.inventories" href="#piate.api.client.Client.inventories">inventories</a></code></li>
+<li><code><a title="piate.api.resources.entries.Entries.session" href="#piate.api.resources.entries.Entries.session">session</a></code></li>
 </ul>
 </li>
 </ul>
